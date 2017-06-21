@@ -1,0 +1,62 @@
+BODY {
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+	font-family:"Trebuchet MS", Verdana, Arial, sans-serif;
+	font-size:100%;
+	color: #000000;
+}
+
+#maincontainer{
+	background-color: #FFFFFF;
+}
+
+#topsection{
+height: 230px; /*Height of top section*/
+}
+
+#contentwrapper{
+float: left;
+width: 100%;
+}
+
+#contentcolumn{
+margin-left: 200px; /*- :D -*/
+text-align : justify;
+}
+
+#leftcolumn{
+float: left;
+width: 200px; /*- :D -*/
+margin-left: -100%;
+text-align : left;
+}
+
+#footer{
+	clear: left;
+	width: 100%;
+	padding: 4px 0;
+}
+
+.innertube{
+margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+margin-top: 0;
+}
+	
+.mygradient {
+	background-image: url(logobarra.gif);    
+	background-repeat: repeat-x;
+	background-position:top left;
+}
+
+.end {
+	background-image: url(scum.gif);    
+	background-repeat: no-repeat;
+	background-position:left bottom;
+}
+
+A:link {font-size:100%; text-decoration: underline; color: #000000;}
+A:visited {font-size:100%; text-decoration: underline; color: #000000;}
+A:active {font-size:100%; text-decoration: underline; color: #000000;}
+A:hover {font-size:100%; text-decoration: underline; color: #000000;}
+a img {text-decoration: none; border:0px; }
