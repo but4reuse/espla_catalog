@@ -1,0 +1,7064 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.css" />
+	<link rel="stylesheet" type="text/css" href="files/web.css" />
+<style type="text/css">
+.dataTables_filter, .dataTables_info {
+	display: none;
+}
+</style>
+<style type="text/css">
+tfoot {
+	display: table-header-group;
+}
+</style>
+<style type="text/css">
+input {
+	width: 100px
+}
+</style>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+<script type="text/javascript" class="init">
+	$(document).ready(function() {
+		$('#grid tfoot th').each(function() {
+			var title = $(this).text();
+			$(this).html('<input type="text" placeholder="Search" />');
+		});
+		var table = $('#grid').DataTable({
+			paging : false
+		});
+		table.columns().every(function() {
+			var title = this.header();
+			var that = this;
+			$('input', this.footer()).on('keyup change', function() {
+				if (that.search() !== this.value) {
+					that.search(this.value).draw();
+				}
+			});
+		});
+	});
+</script>
+
+</head>
+<body>
+	<div>
+		<h1 style="text-align:center">ESPLA Catalog</h1>
+	</div>
+	<table id="grid" class="display" width="300%" cellspacing="0">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Publications using it</th>
+				<th>Original publication of the system</th>
+				<th>Websites</th>
+				<th>Brief description</th>
+				<th>Origin</th>
+				<th>Available</th>
+				<th>Type of artefact</th>
+				<th>Detailed type of artefact</th>
+				<th>Used in which activities</th>
+				<th>Easy to reproduce</th>
+				<th>Strategies used to tackle the problem</th>
+				<th>Free comments</th>
+				<th>Number of variants</th>
+				<th>Max. number of variants in the case of generation</th>
+				<th>Average size</th>
+				<th>Min. size</th>
+				<th>Max. size</th>
+				<th>How the variants are generated</th>
+				<th>Are the variants created independently?</th>
+<th>Number of features</th>
+<th>Number of optional features</th>
+<th>List of feature names available</th>
+<th>How these features were identified and named?</th>
+<th>Information of which features are implemented in each variant?</th>
+<th>Feature implemented independently in different variants</th>
+<th>Feature with modifications from one variant to another</th>
+<th>2-wise coverage of the features in the variants</th>
+<th>Feature-based jaccard index (similarity)</th>
+<th>Ground-truth for feature location</th>
+<th>Precision and recall reported for feature location</th>
+<th>Ground-truth for feature constraints discovery</th>
+<th>Reported results for feature constraints discovery</th>
+<th>Features with cross-cutting behavior</th>
+<th>Semantic feature constraints (not only structural)</th>
+<th>Constraints degree? Requires or excludes (degree 2)</th>
+<th>Group of features, Alternative</th>
+<th>Group of features, Or</th>
+<th>Abstract features</th>
+<th>Derivative features due to feature interactions or feature negations</th>
+<th>Stakeholders views of the var model mentioned</th>
+<th>Ground-truth for feature model synthesis</th>
+<th>Reported results for feature model synthesis</th>
+<th>RGround-truth for reusable assets extraction</th>
+<th>Reported results for reusable assets extraction</th>
+<th>Testing assets</th>
+<th>Execution traces</th>
+<th>Domain ontology</th>
+<th>Version control history</th>
+<th>Documentation</th>
+<th>Human effort mentioned</th>
+<th>Costs or cost model mentioned</th>
+<th>PLA Reference Architecture available?</th>
+			</tr>
+		</thead>
+		<tfoot>
+						<tr>
+				<th>Name</th>
+				<th>Publications using it</th>
+				<th>Original publication of the system</th>
+				<th>Websites</th>
+				<th>Brief description</th>
+				<th>Origin</th>
+				<th>Available</th>
+				<th>Type of artefact</th>
+				<th>Detailed type of artefact</th>
+				<th>Used in which activities</th>
+				<th>Easy to reproduce</th>
+				<th>Strategies used to tackle the problem</th>
+				<th>Free comments</th>
+				<th>Number of variants</th>
+				<th>Max. number of variants in the case of generation</th>
+				<th>Average size</th>
+				<th>Min. size</th>
+				<th>Max. size</th>
+				<th>How the variants are generated</th>
+				<th>Are the variants created independently?</th>
+<th>Number of features</th>
+<th>Number of optional features</th>
+<th>List of feature names available</th>
+<th>How these features were identified and named?</th>
+<th>Information of which features are implemented in each variant?</th>
+<th>Feature implemented independently in different variants</th>
+<th>Feature with modifications from one variant to another</th>
+<th>2-wise coverage of the features in the variants</th>
+<th>Feature-based jaccard index (similarity)</th>
+<th>Ground-truth for feature location</th>
+<th>Precision and recall reported for feature location</th>
+<th>Ground-truth for feature constraints discovery</th>
+<th>Reported results for feature constraints discovery</th>
+<th>Features with cross-cutting behavior</th>
+<th>Semantic feature constraints (not only structural)</th>
+<th>Constraints degree? Requires or excludes (degree 2)</th>
+<th>Group of features, Alternative</th>
+<th>Group of features, Or</th>
+<th>Abstract features</th>
+<th>Derivative features due to feature interactions or feature negations</th>
+<th>Stakeholders views of the var model mentioned</th>
+<th>Ground-truth for feature model synthesis</th>
+<th>Reported results for feature model synthesis</th>
+<th>RGround-truth for reusable assets extraction</th>
+<th>Reported results for reusable assets extraction</th>
+<th>Testing assets</th>
+<th>Execution traces</th>
+<th>Domain ontology</th>
+<th>Version control history</th>
+<th>Documentation</th>
+<th>Human effort mentioned</th>
+<th>Costs or cost model mentioned</th>
+<th>PLA Reference Architecture available?</th>
+			</tr>
+		</tfoot> 
+		<tbody>
+<tr>
+<td>Airbag</td>
+<td>Schulze et al. 2013</td>
+<td></td>
+<td></td>
+<td>Adding variability to functional safety models. Derivation of variant specific functional safety models.</td>
+<td>Academic</td>
+<td>No</td>
+<td>Model</td>
+<td>Architecture model (medini model artefacts)</td>
+<td>SPL implementation</td>
+<td></td>
+<td></td>
+<td></td>
+<td>N/A</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>9</td>
+<td>3</td>
+<td>Yes, in a screenshot of the paper</td>
+<td>Manually by the authors after analysing the airbag domain</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Alcatel-Lucent IXM-PF</td>
+<td>Zhang et al. 2011</td>
+<td></td>
+<td></td>
+<td>"A telecom software product family [...] has been developed and maintained for more than ten years in Alcatel-Lucent" then they decided to iteratively extract an SPL from their variants</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>C and C++</td>
+<td>Feature identification, feature location, feature model synthesis, reusable assets construction</td>
+<td>No</td>
+<td>Manual, reengineering</td>
+<td></td>
+<td></td>
+<td></td>
+<td>10 M LOC, 300 to 400 modules</td>
+<td></td>
+<td></td>
+<td>"Over time, new products were developed by branching and adapting from selected ancestors in an ad-hoc way. Furthermore, variant products were maintained separately."</td>
+<td></td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"Various kinds of stakeholders are involved in the product family" Marketing and sales persons, architects, senior managers</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"The IXM-PF reengineering project achieved initial success after one and a half years. It should be noted that the same team was responsible for the regular maintenance and delivery of related products during this time period."</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>algorithms.js</td>
+<td>Rodriguez Santos et al. SPLC 2016</td>
+<td>Silva et al. SANER 2015</td>
+<td>The original system: <a href="http://aserg.labsoft.dcc.ufmg.br/qualitas.js/" target="_blank">Qualitas.js Dataset</a>  The extracted SPLs: <a href="https://github.com/riselabs-ufba/RiPLE-HC-ExperimentalData" target="_blank">Github</a></td>
+<td>Some characteristic in the "features list" of the open-source (sometimes available in the project web site) were extracted from a single product. Then a feature model and SPL were created. The objective was to show RIPLE-HC capability to implement javascript SPLs. </td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Javascript</td>
+<td>Feature identification, Feature location, Feature Model Synthesis, Reusable assets construction</td>
+<td>No</td>
+<td>Manual feature identification and extraction.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1549 LOC, 29 Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>28</td>
+<td></td>
+<td>Yes</td>
+<td>Manually from project descriptions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Information in the manually extracted reusable assets</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Syntactically valid. Behavior was not checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+
+<tr>
+<td>AndroZoo</td>
+<td>Li et al. SPLC 2016</td>
+<td>Allix et al. MSR 2016</td>
+<td><a href="https://androzoo.uni.lu" target="_blank">Androzoo</a></td>
+<td>"AndroZoo is a growing collection of Android Applications collected from several sources, including the official Google Play app market. ". It was used for the identification of families in large repositories.</td>
+<td>Public Repository</td>
+<td>Yes, asking for a access key</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification</td>
+<td>No</td>
+<td>Source code similarity</td>
+<td>We cannot consider the content of AndroZoo as variants. It contains 5,546,302 different APKs</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ApacheWeb Server</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>Authors mention these websites but it is not found <a href="http://www.fosd.de/fh" target="_blank">link</a>, <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td></td>
+<td>Open source</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>10 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ArgoUML</td>
+<td>Vinicius Couto CSMR 2011</td>
+<td></td>
+<td><a href="https://github.com/marcusvnac/argouml-spl" target="_blank">Github</a></td>
+<td>This is the work that created the ArgoUML SPL.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature location, feature model synthesis, reusable assets construction</td>
+<td>Manual</td>
+<td>Reusable assets using conditional compilation</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>120 KLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>11</td>
+<td>8</td>
+<td>Yes</td>
+<td>Manual, "features have been selected because they represent relevant functional requirements"</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes, it was intentional to extract features with cross-cutting behavior</td>
+<td>No</td>
+<td>2</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes, 150% system with Java-pp annotations</td>
+<td></td>
+<td>Yes</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ArgoUML UML</td>
+<td>Martinez et al. ASE 2015</td>
+<td>Vinicius Couto CSMR 2011</td>
+<td><a href="https://github.com/but4reuse/but4reuse/wiki/Examples" target="_blank">BUT4Reuse examples</a></td>
+<td>The variants of ArgoUML SPL as UML models. Only the variants Original and then each other variant with a diagram disabled.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Model</td>
+<td>UML class model</td>
+<td>Feature identification</td>
+<td>Yes</td>
+<td>Formal context analysis</td>
+<td></td>
+<td>7 used in the paper but 9 available</td>
+<td>N/A</td>
+<td>51,087 classes, 77,519 attributes, 28,885 references </td>
+<td>50,349 classes, 76,417 attributes, 28,465 references</td>
+<td>51,418 classes, 78,046 attributes, 29,071 references</td>
+<td>UML class models reverse engineered from source code of variants.</td>
+<td>No, the source code variants were derived from an SPL</td>
+<td>7</td>
+<td>6</td>
+<td>Yes</td>
+<td>In the original SPL</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>2</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No, in this case we did not use Logging nor Cognitive features of ArgoUML SPL</td>
+<td>No</td>
+<td>2</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes, CVL base model and resolution model (model fragments)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ArgoUML/SPL</td>
+<td>Eyal-Salman et al. 2013 2013a 2013b 2013c 2014, Linsbauer et al. 2013 2014, Klatt et al. 2014, Ziadi et al. 2012, Al-Msie'Deen et al. 2013, Fischer et al. 2014</td>
+<td>Vinicius Couto CSMR 2011</td>
+<td><a href="https://github.com/marcusvnac/argouml-spl" target="_blank">Github</a></td>
+<td>A product line variant of ArgoUML. ArgoUML is an open source UML modeling tool and includes support for all standard UML 1.4 diagrams.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>All, feature identification and naming, feature location, feature constraints discovery, feature model synthesis and reusable assets extraction</td>
+<td></td>
+<td>Formal context analysis, information retrieval</td>
+<td>The most used case study in extractive SPL adoption according to the study Wesley et al. 2017. AL-msie'deen used 10 variants: All enabled, all disabled, and the rest are All enabled except one feature each. Similar variants are used in other studies.</td>
+<td>N/A</td>
+<td>256</td>
+<td>N/A</td>
+<td>110933 LOC</td>
+<td>148715 LOC</td>
+<td>SPL with java-pp annotations</td>
+<td></td>
+<td>11</td>
+<td>8</td>
+<td>Yes</td>
+<td>Manual by academics</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Yes, annotations in the SPL</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>No</td>
+<td>2</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes, 150% system with Java-pp annotations</td>
+<td></td>
+<td>Yes</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Automarker systems</td>
+<td>Niu et al. 2014, Boutkova and Houdek 2011</td>
+<td></td>
+<td></td>
+<td>A web-based system for "automating the process of marking first-year programming assignments" of students</td>
+<td>Academic</td>
+<td>No</td>
+<td>Requirements</td>
+<td>Text document</td>
+<td>Similarity, feature identification, reusable assets extraction</td>
+<td>No</td>
+<td>Information retrieval, natural language processing</td>
+<td>Requirements follows the IEEE-830 standard in a textual form. Extracted reusable assets are called "functional requirements profiles (FRPs)"</td>
+<td>12</td>
+<td></td>
+<td>40 pages long containing about 800 sentences. File size 293 kB</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>17 (functional requirements profiles)</td>
+<td></td>
+<td>No, some of them are named in an OVM variability model.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, their approach was compared with manual analysis.</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Banking System</td>
+<td>Martinez et al. 2014, Maâzoun et al. 2014b</td>
+<td></td>
+<td><a href="https://github.com/but4reuse/but4reuse/wiki/Examples" target="_blank">BUT4Reuse examples</a></td>
+<td>Simple variants of UML class diagrams. Features are the BankCore, CurrencyConverter, WithdrawWithLimit, WithdrawWithoutLimit and Consortium.</td>
+<td>Illustrative</td>
+<td>Yes</td>
+<td>Model</td>
+<td>UML class model</td>
+<td>Feature identification</td>
+<td>Yes</td>
+<td>Overlap analysis</td>
+<td></td>
+<td>3</td>
+<td>N/A</td>
+<td>57 classes, 56 attributes, 25 references</td>
+<td>47 classes, 47 attributes, 19 references</td>
+<td>63 classes, 62 attributes, 29 references</td>
+<td>Manually</td>
+<td>No</td>
+<td>5</td>
+<td>4</td>
+<td>Yes</td>
+<td>Manually</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>100%</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td>2</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Baxter Biocience</td>
+<td>Lora-Michiels et al. 2010</td>
+<td></td>
+<td></td>
+<td>Products for hemophilia and immune disorders. " we focused our study around all the components that constitute the packaging process of the different treatments that Baxter Bioscience produces"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Documentation</td>
+<td>Bill of materials</td>
+<td>Feature constraints discovery</td>
+<td>No</td>
+<td>Association rules algorithm</td>
+<td></td>
+<td>536</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Different configurations of the bill of materials</td>
+<td>No</td>
+<td>More than 1500</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Berkeley DB</td>
+<td>Linsbauer et al. 2014, Xue 2012, Nie et al. 2012</td>
+<td><a href="https://www.oracle.com/database/berkeley-db/index.html" target="_blank">Berkeley DB</a></td>
+<td><a href="http://spl2go.cs.ovgu.de/projects" target="_blank">SPL2Go</a> , <a href="http://fosd.de/SPLConqueror" target="_blank">SPLConqueror</a>   , download  <a href="http://www.fosd.de/fh" target="_blank">FH superImposition examples</a> </td>
+<td>Database engine SPL</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td></td>
+<td>Diff and merge, genetic algorithms</td>
+<td>Nie et al. reference the SPLOT feature model repository for 2 variants of the Berkeley DB but they are not found. There is one BerkleyDB feature model there but the number of features do not correspond. Linsbauer et al. differentiate between BerkeleyDB Footprint, Memory and Performance feature models.</td>
+<td>1 (Xue used 5 variants generated from the SPL)</td>
+<td></td>
+<td>42 features (in the version at <a href="http://spl2go.cs.ovgu.de/projects" target="_blank">SPL2Go</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>BlueJ</td>
+<td>Olszak and Jørgensen 2012</td>
+<td></td>
+<td><a href="http://www.bluej.org/" target="_blank">BlueJ</a></td>
+<td></td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, Feature location, Transformation</td>
+<td>No</td>
+<td>Manual feature identification "infer almost all program features from the available user documentation, since it is arranged into a list of usage scenarios. This way we have identified 127 use cases, which we have then grouped into 41 coherent groups representing features". Automatic feature location with feature-entry-point annotations</td>
+<td>For transformation: "we automatically create a class-preserving decomposition, while leaving the decision about any further manual separation up to the programmers."</td>
+<td>1</td>
+<td>N/A</td>
+<td>78 KLOC</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>41 (39 are considered)</td>
+<td></td>
+<td>Yes</td>
+<td>Manually</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2 hours for feature identification</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>BMW car web configurator</td>
+<td>Abbasi et al. 2014</td>
+<td></td>
+<td>Broken link to data: <a href="http://info.fundp.ac.be/∼eab/result.html" target="_blank">link</a>  and <a href="http://www.bmwusa.com" target="_blank">link</a></td>
+<td>The authors chose the “2013 128i Coupe” model</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Web</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Crawling the web configuration and extracting data patterns in the websites</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Body Comfort System SPL</td>
+<td>Wille et al. Variability Mining of State Charts</td>
+<td>Lity et al. Delta-oriented Software Product Line Test Models - The Body Comfort System case study. Creation of the case study: Müller et al. A Comprehensive Description of a Model-based, Continous Development Process for AUTOSAR Systems with Integrated Quality Assurance. Creation of the SPL based on the system: Oster et al. Pairwise feature-interaction testing for spls: potentials and limitations. SPLC 2015</td>
+<td></td>
+<td>Automotive software system SPL</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Model</td>
+<td>Statechart models in IBM Rational Raphsody</td>
+<td>Feature identification, feature location</td>
+<td>No</td>
+<td>Similarity analysis, merge</td>
+<td></td>
+<td>18 (they used 18 of the possible ones)</td>
+<td>11616</td>
+<td>Around 187 based on min and max</td>
+<td>91 elements (states, regions and transitions)</td>
+<td>283 elements (states, regions and transitions)</td>
+<td>Generated from the SPL</td>
+<td></td>
+<td>27 (in the 18 selected variants)</td>
+<td></td>
+<td>Yes</td>
+<td>Domain experts</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, in the original publication</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>brackets</td>
+<td>Rodriguez Santos et al. 2016</td>
+<td>Silva et al. SANER 2015</td>
+<td>The original system: <a href="http://aserg.labsoft.dcc.ufmg.br/qualitas.js/" target="_blank">Qualitas.js Dataset</a>  The extracted SPLs: <a href="https://github.com/riselabs-ufba/RiPLE-HC-ExperimentalData" target="_blank">Github</a></td>
+<td>Some characteristic in the "features list" of the open-source (sometimes available in the project web site) were extracted from a single product and a feature model and SPL were created. The objective was to show RIPLE-HC capability to implement javascript SPLs. </td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Javascript</td>
+<td>Feature identification, Feature location, Feature Model Synthesis, Reusable assets construction</td>
+<td>No</td>
+<td>Manual feature identification and extraction.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>122971 LOC, 403 Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>13</td>
+<td></td>
+<td>Yes</td>
+<td>Manually from project descriptions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Information in the manually extracted reusable assets</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>2</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Syntactically valid. Behavior was not checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>BSH induction hob families</td>
+<td>Ballarin et al. ICSR 2016</td>
+<td></td>
+<td></td>
+<td>Two families of induction hobs with certain degree of reuse among them. The objective is to locate and compare the featuers of both families to find out cases where features were reimplemented, modified, adapted, unaltered or new.</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Model and Source code</td>
+<td>Propietary DSL called IHDSL and C code</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Formal context analysis</td>
+<td></td>
+<td>112 (46 of one family and 66 of another)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>The variants of each of the two families are created through generation, however there are differences between the implementation of the features between the families.</td>
+<td>Yes, they found cases of "reimplemented", "modified", "adapted" and "unaltered" features</td>
+<td>128 (81 of one family and 47 of the other, there is no ground truth to say which ones are shared in the two families)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>BSH induction hobs</td>
+<td>Font et al. ICSR 2016, Font et al. Models 2016</td>
+<td></td>
+<td></td>
+<td>Industrial variants of induction hobs from the BSH company</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Model</td>
+<td>Propietary DSL called IHDSL (46 meta-classes, 74 references, 180 properties)</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td>The approach try to deal with feature location in cases where inaccuracies are introduced by domain experts</td>
+<td>46</td>
+<td></td>
+<td>100 elements mentioned in one paper and 500 elements in other. Probably different interpretations of element.</td>
+<td></td>
+<td></td>
+<td>Generated</td>
+<td>No</td>
+<td>96</td>
+<td></td>
+<td>No</td>
+<td>Manually</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Yes, "set of features properly located" "the oracle is extracted from a set of product models that are currently under production"</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>Yes, CVL fragments</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Busybox</td>
+<td>Nadi et al. TSE 2015</td>
+<td></td>
+<td><a href="https://busybox.net/" target="_blank">Busybox</a> <a href="https://bitbucket.org/tberger/farce" target="_blank">Farce</a> </td>
+<td>"BusyBox is an implementation of 310 GNU shell tools (ls, cp, rm, mkdir, etc.) within one binary executable." Customizable C code, KConfig variability model</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>C</td>
+<td>Feature constraints discovery</td>
+<td>Yes, <a href="https://bitbucket.org/tberger/farce" target="_blank">Farce</a></td>
+<td>Dependency analysis</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>535 Files</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>921</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, Kconfig model</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Choccreate web configurator</td>
+<td>Abbasi et al. 2014</td>
+<td></td>
+<td>Broken link to data: <a href="http://info.fundp.ac.be/∼eab/result.html" target="_blank">link</a> and <a href="http://www.choccreate.com" target="_blank">link</a></td>
+<td>"The customer can choose her chocolate and create its masterpiece and ingredients"</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Web</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Crawling the web configuration and extracting data patterns in the websites</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>CM-1 NASA</td>
+<td>Lohar et al. 2013</td>
+<td></td>
+<td>Broken link: coest.org   -> found at CM1 folders at <a href="https://github.com/CoEST/TraceLab/tree/master/Main/Data/Datasets" target="_blank">Github</a> </td>
+<td>"This dataset is a modified from NASA Metrics Data Program's CM-1 project. The dataset contains 235 high-level and 220 low-level requirements. The trace for the dataset was manually verified. The "theoretical true trace" (answerset) built for this dataset consisted of 361 correct links. Each of the high- and low-level files contain the text of one requirement element. Provided by: Jane Hayes, University of Kentucky"</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Requirements</td>
+<td>XML files</td>
+<td>Software traceability in general (related to feature location)</td>
+<td>Yes</td>
+<td>Genetic algorithm evolving traceability algorithms, fitness function based on known correct traces</td>
+<td></td>
+<td></td>
+<td></td>
+<td>235 high-level requirements linked to 220 low-level requirements</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Collaborative Software Suite (CoSS)</td>
+<td>Hariri et al. 2013</td>
+<td></td>
+<td></td>
+<td>A tool to "support project members collaborating on a distributed project. CoSS will be developed as a web-based solution for managing projects and supporting collaboration across an enterprise-level organization."</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Documentation</td>
+<td>Text documents with product descriptions</td>
+<td>Feature identification, feature recommendation</td>
+<td>No</td>
+<td>Expert knowledge, manual</td>
+<td></td>
+<td>100 ("a combination of expert knowledge and publicly available product descriptions for over 100 related commercial products")</td>
+<td></td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>120</td>
+<td></td>
+<td>No, but an excerpt of the feature model is shown</td>
+<td>Manually</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"The domain analyst invested over 30 hours to identify approximately 120 coarse-grained features. The domain analysis did not include identifying composition rules such as optionality, variability, or mutual exclusion between features."</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Communications-Based Train Control (CBTC)</td>
+<td>Ferrari et al. 2013</td>
+<td></td>
+<td></td>
+<td>Brochures and other publicly available documents of five CBTC vendors, namely Alstom, Bombardier, Invensys, Thales, and Siemens</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Documentation</td>
+<td>Text files in natural language</td>
+<td>Feature identification</td>
+<td>No</td>
+<td>NLP techniques</td>
+<td></td>
+<td>5</td>
+<td>N/A</td>
+<td>3.8 documents, 37 pages, 10359.6 words</td>
+<td>Thales: 3 documents, 19 pages, 7,478 words</td>
+<td>"Bombardier: 5 documents, 72 pages, 16,317 words"</td>
+<td>Manually</td>
+<td>Indendepent companies</td>
+<td>180 features (6 features identified as common features)</td>
+<td>174 features</td>
+<td>No</td>
+<td>NLP approach and then manual refinement/filtering</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Comparative table of PaaS</td>
+<td>Acher et al. 2012</td>
+<td>"Provided by an external person"</td>
+<td></td>
+<td></td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Documentation</td>
+<td>CSV file</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>8</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>45 synthetised with their approach</td>
+<td></td>
+<td>Yes</td>
+<td>Using their heuristic</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Curl</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>Authors mention these websites but it is not found <a href="http://www.fosd.de/fh" target="_blank">link</a>, <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td></td>
+<td>Open source</td>
+<td>No</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Danfoss Drives frequency converters</td>
+<td>Jepsen et al. SPLC 2007</td>
+<td></td>
+<td></td>
+<td>They started with a prototype "To derive a prototype for the common source code base, the code branches of the first two product projects (which were also two of the major contributors of functions) were put together. "</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>C and C++</td>
+<td>Feature identification, feature model synthesis, reusable assets construction</td>
+<td>No</td>
+<td>Merging the variants. Variability model extracted bottom-up from compilation directives</td>
+<td></td>
+<td>2 (initially 2 and then they started adding features from other variants)</td>
+<td></td>
+<td>200 KLOC "Several hundred thousand LOC"</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, time and persons involved are mentioned in the paper</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Defense domain systems</td>
+<td>Rubin et al. 2015, Eriksson et al. 2005</td>
+<td></td>
+<td></td>
+<td>case study comes from a large aerospace and defense company</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Requirements, Tests, Models, Source code</td>
+<td>C and C++</td>
+<td>Detection, Analysis, Transformation</td>
+<td>No</td>
+<td>Structural Similarity, Set Theory</td>
+<td>There is no much information of the systems</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>SPL</td>
+<td>It stems from two similar products which became successful and grew into a family containing five commercial products and a couple of in-development prototypes.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Dell laptop web configurator</td>
+<td>Abbasi et al. 2014</td>
+<td></td>
+<td>Broken link to data: <a href="http://info.fundp.ac.be/∼eab/result.html" target="_blank">link</a>. <a href="http://www.dell.com/" target="_blank">Dell</a> </td>
+<td>The authors took the “Inspiration 15” model in this experiment</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Web</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Crawling the web configuration and extracting data patterns in the websites</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Dell Laptops catalog</td>
+<td>Acher et al. 2012</td>
+<td>SPLOT feature configuration</td>
+<td><a href="https://nyx.unice.fr/projects/familiar/wiki/VariCell" target="_blank">VariCell</a>. <a href="http://www.splot-research.org/" target="_blank">SPLOT</a> </td>
+<td>A catalog of laptops with different characteristics</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Documentation</td>
+<td>CSV file</td>
+<td>Feature identification, feature model synthesis</td>
+<td></td>
+<td></td>
+<td></td>
+<td>33</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Catalog</td>
+<td></td>
+<td>102</td>
+<td></td>
+<td>Yes</td>
+<td>Using their heuristic</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>DesktopSearcher</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td><a href="http://spl2go.cs.ovgu.de/projects" target="_blank">SPL2Go</a></td>
+<td>Program for indexing and content based searching in files</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>22 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>DirectBank</td>
+<td>Peng et al. 2013</td>
+<td></td>
+<td></td>
+<td>"A small-scale Java-based financial system from our industry partner, Wingsoft Ltd., which provides bank interfacing services for cashiers."</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Hybrid of information retrieval and structural analysis and graph analysis</td>
+<td>Wingsoft is the same company as (Xue et al. 2010, Xue 2012)</td>
+<td>1</td>
+<td>N/A</td>
+<td>30 KLOC, 53 Classes, 414 Methods</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>71</td>
+<td></td>
+<td>No</td>
+<td>"The system experts manually construct the feature model of the system." </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>They mention 951 constraints</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"The system experts provide the natural language description of these features and business objects."</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Dog tag web configurator</td>
+<td>Abbasi et al. 2014</td>
+<td></td>
+<td>Broken link to data: <a href="http://info.fundp.ac.be/∼eab/result.html" target="_blank">link</a>. <a href="http://www.mydogtag.com" target="_blank">My dog tag</a> </td>
+<td>Dog tag generator</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Web</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Crawling the web configuration and extracting data patterns in the websites</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>DOPLER tool</td>
+<td>Grünbacher et al. Model-Based Customization and Deployment of Eclipse-Based Tools: Industrial Experiences, ASE 2009</td>
+<td>Grünbacher et al. Product Line Tools are Product Lines Too: Lessons Learned from Developing a Tool Suite, ASE 2008</td>
+<td><a href="http://ase.jku.at/modules/product-lines/" target="_blank">DOPLER</a></td>
+<td>"Applying product line concepts in our tool development processes"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Components</td>
+<td>Eclipse plugins</td>
+<td>Feature identification, feature location, feature constraints discovery, variability model synthesis, reusable assets extraction</td>
+<td>No</td>
+<td>Manual analysis</td>
+<td>Variability exists in plugins, configuration files, settings etc.</td>
+<td>1</td>
+<td></td>
+<td>45 plugins with about 210 kLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Not mentioned, but 84 "assets in the variability model"</td>
+<td></td>
+<td>No, a partial view of the decision model in the paper</td>
+<td>Manual</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>No, 243 relationships mentioned in the "84 assets of the variability model"</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Draw Product Line</td>
+<td>Fischer et al. 2014, Linsbauer et al. 2013</td>
+<td>Fischer et al. 2014</td>
+<td><a href="http://www.jku.at/JKU_Site/JKU/isse/content/e139529/e126342/e216409/e218262/Draw_Java.zip" target="_blank">Direct download</a>. <a href="http://www.jku.at/isse/content/e139529/e126342/e216409" target="_blank">Link</a> and  <a href="https://github.com/llinsbauer/dpl" target="_blank">github</a> </td>
+<td>A draw application.</td>
+<td>Illustrative</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location</td>
+<td>Yes</td>
+<td>Overlap analysis, graphs analysis</td>
+<td></td>
+<td>N/A</td>
+<td>12</td>
+<td>380 LOC approx</td>
+<td>287 LOC</td>
+<td>473 LOC</td>
+<td></td>
+<td>No</td>
+<td>5</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>E-Clinic</td>
+<td>Lohar et al. 2013</td>
+<td></td>
+<td>Broken link: coest.org -> found at CM1 folders at <a href="https://github.com/CoEST/TraceLab/tree/master/Main/Data/Datasets" target="_blank">Github</a> </td>
+<td>Easy clinic</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Model</td>
+<td>Use cases model</td>
+<td>Feature location, traceability recovery</td>
+<td>Yes</td>
+<td>Genetic algorithm evolving traceability algorithms, fitness function based on known correct traces</td>
+<td></td>
+<td></td>
+<td></td>
+<td>30 use cases linked to 47 test cases</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Eclipse official releases</td>
+<td>Martinez et al. ICSR 2015</td>
+<td></td>
+<td><a href="http://www.eclipse.org" target="_blank"></a>eclipse.org</td>
+<td>Using the official variants of an Eclipse release (e.g., Kepler SR2 in the year 2014)</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Components</td>
+<td>Eclipse plugins</td>
+<td>Feature location</td>
+<td>Yes</td>
+<td>Formal context analysis, information retrieval</td>
+<td></td>
+<td>12 (it depends on the release, in the year 2008 Eclipse Europa Winter contained 4 variants but from 2011 onwards it is between 12 or 13 variants)</td>
+<td></td>
+<td>around 2000 plugins (depends on the release)</td>
+<td></td>
+<td></td>
+<td>Eclipse foundation system to create the variants</td>
+<td>No</td>
+<td>around 400 features (depends on the release)</td>
+<td></td>
+<td>Yes</td>
+<td>Domain experts, developers of the features</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td>2</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes, but not used</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, but not used</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Eclipse Projects and Plugins</td>
+<td>Knodel et al. 2005, Bayer et al. 2004, Martinez et al. ICSR 2015</td>
+<td></td>
+<td>eclipse.org</td>
+<td>Obtain a reference architecture to create existing and new variants (in the case of Bayer et al. "two new IDEs (the KobrA component browser and the frame processor").</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Components and source code</td>
+<td>Eclipse plugins their Java code</td>
+<td>Feature location, reusable assets extraction, reference architecture discovery</td>
+<td>Yes</td>
+<td>Feature traces analysis, information retrieval</td>
+<td></td>
+<td>4 for Bayer et al. "the JDT, CDT, and CobolDT, and the source code for the Eclipse IDE. An independent working copy of the Eclipse core and a single plug-in added to the core were also created."</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes
+<td></td>
+</tr>
+
+<tr>
+<td>eCos kernel</td>
+<td>She et al. 2011, Nadi et al. 2015</td>
+<td></td>
+<td><a href="http://ecos.sourceware.org/" target="_blank">eCos</a> but the data is <a href="https://code.google.com/archive/p/variability/" target="_blank">here</a> (many links and images broken but the repository can be downloaded)</td>
+<td>A real-time operating system using the component definition language (CDL) that is like a feature model. Around 1200 features.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td><a href="http://gsd.uwaterloo.ca/reverse-engineering-feature-models" target="_blank">Link</a></td>
+<td>Using feature names, descriptions and dependencies. Implications graph.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1245 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Electric motor controller</td>
+<td>Rubin et al. 2015</td>
+<td>Rubin et al. 2015</td>
+<td></td>
+<td>Danfoss Drives, is one of the largest producers of frequency converters—electronic power conversion devices used to control shaft speed or torque of a three-phase induction motor.</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source Code</td>
+<td>C and C++</td>
+<td>Detection, Analysis, Transformation</td>
+<td>No</td>
+<td>Structural Similarity, Set Theory</td>
+<td></td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>clone-and-own</td>
+<td></td>
+<td>1,100 features and hundreds of configurations used by customers</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Electric Parking Brake System</td>
+<td>Martinez et al. VISSOFT 2014</td>
+<td>Dumitrescu et al. Bridging the gap between product lines and systems engineering: An experience in variability management for automotive model based systems engineering. SPLC 2013</td>
+<td><a href="https://github.com/but4reuse/frogs" target="_blank">Link</a>,  <a href="https://github.com/but4reuse/frogs/blob/master/ConstraintsVisualiser/data/epsConfigs.txt" target="_blank">data</a>  </td>
+<td>An SPL for the Renault’s Electric Parking Brake System. "The case study is focused on the variability in the BOM (Bill of Materials) related to the logical/physical components"</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Documentation</td>
+<td>Bill of materials</td>
+<td>Feature constraints discovery</td>
+<td>No</td>
+<td>Visualization support</td>
+<td></td>
+<td>200</td>
+<td>2976</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Different configurations of the bill of materials</td>
+<td>No</td>
+<td>20</td>
+<td></td>
+<td>Yes</td>
+<td>Domain experts</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>E-Shop</td>
+<td>Itzik et al. 2014 Generating Feature Models from Requirements: Structural vs. Functional Perspectives. (Itzik et al. 2016) Variability Analysis of Requirements: Considering Behavioral Differences and Reflecting Stakeholders Perspectives TSE 2016.</td>
+<td></td>
+<td><a href="http://mis.hevra.haifa.ac.il/~iris/research/SOVA/" target="_blank">SOVA</a></td>
+<td>A set of requirements for an E-Shop</td>
+<td>Academic</td>
+<td>Yes, in the paper</td>
+<td>Requirements</td>
+<td>Text documents</td>
+<td>Feature model synthesis</td>
+<td>No, SOVA tool not found</td>
+<td>Semantic and Ontological Variability Analysis</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>22 requirements. The inputs are requirements for a single system.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Two feature models from an structural and functional perspective. Around 33 features.</td>
+<td>Around 28</td>
+<td>Yes</td>
+<td>Automatically from their approach.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, automatically derived</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ET Software Design Robot Contest (ERC)</td>
+<td>Kumaki et al. 2012</td>
+<td></td>
+<td><a href="http://www.etrobo.jp" target="_blank">ETRobo</a></td>
+<td>"Robots designed to autonomously run on a course by sensing the black line using optical sensors." "The legacy software assets of a group that participated in the ERC for four consecutive years"</td>
+<td>Academic</td>
+<td>No</td>
+<td>Requirements and Models</td>
+<td>Text files and UML class models</td>
+<td>Feature identification, feature location, reusable assets construction</td>
+<td>No</td>
+<td>Overlap analysis</td>
+<td></td>
+<td>4</td>
+<td>N/A</td>
+<td>46 sentences in requirements, 21 classes</td>
+<td>31 sentences in requirements, 16 classes</td>
+<td>69 sentences in requirements, 29 classes</td>
+<td>It is mentioned that "The legacy software assets of a group that participated in the ERC for four consecutive years" so it is not clear if it was the evolution of a system or variants implementing different features. The results suggest that they were implementing different features.</td>
+<td></td>
+<td>Complete feature model not shown, excerpt contains 12 features</td>
+<td></td>
+<td>Only a few of them</td>
+<td>Manually</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Man-hours of using the approach and not using the approach.</td>
+<td></td>
+<td>Yes
+<td></td>
+</tr>
+
+<tr>
+<td>Fame-DBMS</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td><a href="http://spl2go.cs.ovgu.de/projects" target="_blank">SPL2Go</a> , <a href="http://fosd.de/SPLConqueror" target="_blank">SPLConqueror</a></td>
+<td>"prototype of an embedded data management system developed from scratch as software product line."</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>20 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>floraJS</td>
+<td>Rodriguez Santos et al. 2016</td>
+<td>Silva et al. Does Javascript Software Embrace Classes? SANER 2015</td>
+<td>The original system: <a href="http://aserg.labsoft.dcc.ufmg.br/qualitas.js/" target="_blank">Qualitas.js Dataset</a>  The extracted SPLs: <a href="https://github.com/riselabs-ufba/RiPLE-HC-ExperimentalData" target="_blank">Github</a></td>
+<td>Some characteristic in the "features list" of the open-source (sometimes available in the project web site) were extracted from a single product and a feature model and SPL were created. The objective was to show RIPLE-HC capability to implement javascript SPLs. </td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Javascript</td>
+<td>Feature identification, Feature location, Feature Model Synthesis, Reusable assets construction</td>
+<td>No</td>
+<td>Manual feature identification and extraction.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>3325 LOC, 26 Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>18</td>
+<td></td>
+<td>Yes</td>
+<td>Manually from project descriptions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Information in the manually extracted reusable assets</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>2</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Syntactically valid. Behavior was not checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Forum domain (Jforum, JGossip and MVNForum)</td>
+<td>Yang et al. 2009</td>
+<td></td>
+<td>Variants: <a href="http://jforum.net/" target="_blank">JForum</a>. <a href="https://sourceforge.net/projects/jgossipforum/" target="_blank">JGossip</a> and <a href="https://sourceforge.net/projects/mvnforum/" target="_blank">MVNForum</a> </td>
+<td>Three independently implemented variants of a forum system</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java and SQL statements</td>
+<td>Feature identification, feature model synthesis</td>
+<td>No, no complete feature model provided, domain experts needed</td>
+<td>Data schema mapping with domain experts, Formal concept analysis</td>
+<td></td>
+<td>3</td>
+<td>N/A</td>
+<td>68418 LOC</td>
+<td>33123 LOC</td>
+<td>105119 LOC</td>
+<td>Independent team of developers for each variant</td>
+<td>All in Java but independent team of developers for each variant</td>
+<td>94</td>
+<td>36</td>
+<td>No, only a small part in a feature model excerpt</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>FraSCAti</td>
+<td>Acher et al. 2013, 2011</td>
+<td><a href="http://wiki.ow2.org/frascati/Wiki.jsp?page=FraSCAti" target="_blank">FraSCAti</a></td>
+<td><a href="https://nyx.unice.fr/projects/familiar/wiki/ArchFm" target="_blank">Familiar project.</a> This is more recent but it contains broken links to attachments: <a href="https://nyx.unice.fr/projects/familiar/wiki/FraSCAti" target="_blank">FraSCAti</a> </td>
+<td>A plugin based system. OW2 FraSCAti is an open-source implementation of the Service Component Architecture (SCA) standard.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Plugin based, Source code</td>
+<td>Components, Java</td>
+<td>Feature model synthesis, Feature constraints discovery</td>
+<td>Yes</td>
+<td>Static information about the architecture and plugin dependencies</td>
+<td>There is a step for reconciling the extracted FM with the initial FM created manually by the Software Architect. The reconciled FM is not provided but some indications are provided to add missing features and other actions.</td>
+<td>1</td>
+<td></td>
+<td>60 plugins with around 250 KLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>39 -> fm from the Software architect    50 -> extracted FM</td>
+<td>29 -> fm from the Software architect   31 -> extracted fm</td>
+<td>Yes</td>
+<td>Manually by the software architect of Frascati</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>svn <a href="http://websvn.ow2.org/listing.php?repname=frascati" target="_blank">link</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>FreeBSD</td>
+<td>She et al. 2011</td>
+<td></td>
+<td><a href="https://www.freebsd.org/" target="_blank">FreeBSD</a> but the data is <a href="https://code.google.com/archive/p/variability/" target="_blank">here</a> (many links and images broken but the repository can be downloaded)</td>
+<td>FreeBSD contains a flat list of features, around 1200 features. Then they manually created an ontology and a feature model of 192 features.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Model</td>
+<td>Ontology and Feature model</td>
+<td>Feature model synthesis</td>
+<td><a href="http://gsd.uwaterloo.ca/reverse-engineering-feature-models" target="_blank">Link</a></td>
+<td>Using feature names, descriptions and dependencies. Implication graphs.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>192 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Fujitsu Kyushu Network Technologies</td>
+<td>Otsuka et al. 2011</td>
+<td></td>
+<td></td>
+<td>"Hardware, firmware and software for network equipment and image processing systems, etc. as well as the provision of network system solutions"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>C and Assembly</td>
+<td>Feature identification, feature location, reusable assets construction</td>
+<td>No</td>
+<td>Face to face meetings, manual work</td>
+<td>Identified features are separated by layers: Capability, operating environment, domain technology, implementation technique. There was a lot of features so they applied scoping: "Project leaders carefully screened the features to be included in the scope"</td>
+<td>Several, not mentioned</td>
+<td></td>
+<td>300 KLOC "more than several hundred KSLOC (confidential)"</td>
+<td></td>
+<td></td>
+<td>"Most individual product variations result from specific installation site factors, such as different communication capacity requirements. Customer specific functions that are not specified in the standards are another source of product variations that can require additional development and customization efforts."</td>
+<td></td>
+<td>2012</td>
+<td>195</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"Once work began, it became evident that the feature model would depend significantly on each modeler’s individual perspectives and skills. Specifically, the granularity of capability feature identification and the hierarchical arrangement of the features were quite different depending on modelers."</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Development Duration: more than one year, Engaged Engineers About 100 engineers on an average (about 300 engineers at a maximum), Development Sites: four geographically distant locations</td>
+<td>A figure and discussion about the cost and return of investment of the 2nd, 3rd and 4th product derived from the SPL.</td>
+<td></td>
+</tr>
+
+<tr>
+<td>GameOfLife</td>
+<td>Fischer et al. 2014</td>
+<td></td>
+<td>Feature IDE examples, also at <a href="http://www.infosun.fim.uni-passau.de/spl/apel/fh/" target="_blank">link</a> in the superImposition examples</td>
+<td>A simulator of cellular automaton.</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td></td>
+<td>No</td>
+<td>Overlap analysis, graph analysis</td>
+<td></td>
+<td>N/A</td>
+<td>65</td>
+<td>1.3 KLOC approx</td>
+<td>874 LOC</td>
+<td>1.9 KLOC</td>
+<td>Generated SPL</td>
+<td>No</td>
+<td>15</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Global trading and settlement system (GTSS)</td>
+<td>Faust and Verhoef 2003</td>
+<td>Faust and Verhoef 2003</td>
+<td></td>
+<td>global trading and settlement system (GTSS) that is used worldwide at Deutsche Bank.</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Requirements, Source code, Architecture</td>
+<td></td>
+<td>Detection, Analysis, Transformation</td>
+<td>No</td>
+<td>Expert-driven</td>
+<td>GTSS</td>
+<td>more than 15 large to major installations of the system and many more minor ones</td>
+<td></td>
+<td>The system measures about 60 000 function points, contains thousands of code units and has many instances.</td>
+<td></td>
+<td></td>
+<td>copy-paste-modify</td>
+<td>There are variations for different banking services in many countries and in some cases multiple varieties within a country.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Graph Product Line (GPL)</td>
+<td>Linsbauer et al. 2014, Ziadi et al. 2012, SAC 2014</td>
+<td>Lopez-Herrejón and Batory: A Standard Problem for Evaluating Product-Line Methodologies</td>
+<td><a href="http://spl2go.cs.ovgu.de/projects" target="_blank">SPL2Go</a> , <a href="http://featureide.cs.ovgu.de" target="_blank">Feature IDE</a> examples</td>
+<td>This is an SPL that has been reimplemented for several languages (Java, C, etc.) and they also might differ in number of features.</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, Feature location, Feature model synthesis, Reusable assets extraction</td>
+<td>Yes for Ziadi et al.</td>
+<td>Overlap analysis, Genetic algorithms</td>
+<td></td>
+<td>21 in Ziadi et al.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>18 in Linsbauer et al., 38 in Ziadi et al. SAC 2014</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Graphical Editor</td>
+<td>Maia et al. 2008</td>
+<td></td>
+<td></td>
+<td>A small tool for drawing rectangles and circles</td>
+<td>Illustrative</td>
+<td>No</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Analysis of execution traces, sequence alignment algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>387 LOC, 9 classes, 58 methods</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2, the ones under analysis "We have chosen two similar features to execute the system: drawing a rectangle and drawing a circle."</td>
+<td></td>
+<td>Yes</td>
+<td>Manual</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Health Watcher</td>
+<td>AL-Msie'Deen et al. 2013, Shatnawi et al. ICSR 2015</td>
+<td>Greenwood, P. et al. (2007). “On the Impact of Aspectual Decompositions on Design Stability: An Empirical Study”. Proc. ECOOP. Berlin, Germany</td>
+<td><a href="http://ptolemy.cs.iastate.edu/design-study/" target="_blank"></a></td>
+<td>Several releases of a single-system</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification</td>
+<td>No</td>
+<td>Formal concept analysis</td>
+<td></td>
+<td>10</td>
+<td></td>
+<td>6427 LOC</td>
+<td>5288 LOC</td>
+<td>7709 LOC</td>
+<td>Different versions (releases) of the single system. Variability in time (evolution)</td>
+<td>No</td>
+<td>15</td>
+<td>9</td>
+<td>Yes</td>
+<td>Manually by the authors of the extraction. Some info about the features are shown in the original publication of the system.</td>
+<td>No, we don't have the list of features</td>
+<td>No</td>
+<td>To be checked</td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Home Automation</td>
+<td>Nie et al. 2012</td>
+<td>SPLOT repository of feature models</td>
+<td><a href="http://www.splot-research.org/" target="_blank">SPLOT</a></td>
+<td>Two variants of a feature model</td>
+<td>N/A</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Diff and merge</td>
+<td>It is not clear which two variants where selected from the SPLOT repository</td>
+<td>2</td>
+<td></td>
+<td>41 features</td>
+<td>38 features</td>
+<td>45 features</td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Home Service Robot</td>
+<td>Kang et al. 2005</td>
+<td></td>
+<td></td>
+<td>"Home service robots have a wide range of potential applications, such as home security, patient caring, cleaning, etc."</td>
+<td>Academic</td>
+<td>No</td>
+<td>Source code</td>
+<td>Not specified</td>
+<td>Feature identification, feature location, feature constraints discovery, reusable assets construction, feature model synthesis</td>
+<td>No</td>
+<td>As a first step, "From legacy applications, we obtain object relationship diagrams". Then they obtain component and architecture representations. Then they create the feature model.</td>
+<td></td>
+<td>Several, but exact number not mentioned</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Some of them are named in the text but no exact number mentioned</td>
+<td></td>
+<td>Some of them are named in the text</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>They mention that they extract a PLA
+<td></td>
+</tr>
+
+<tr>
+<td>HomeAway</td>
+<td>Krueger et al. SPLC 2008</td>
+<td></td>
+<td><a href="http://splc.net/fame/homeaway.html" target="_blank">HomeAway</a></td>
+<td>Online Vacation Rental Marketplace. A company that bought similar companies on the same domain. "The goal of this effort was to transition from the one-size-fits-all deployment model for each of the twelve sites currently supported by the HomeAway platform to a Gears automated production model. ".</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>ColdFusion language</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>12</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Independently fitting each company requirements</td>
+<td>Yes, companies fusioning</td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Hospital</td>
+<td>Rubin and Chechik, N-Way Model Merging, 2013 </td>
+<td>Y. T. Rad and R. Jabbari. Use of Global Consistency Checking for Exploring and Refining Relationships between Distributed Models: A Case Study. Master’s thesis, Blekinge Institute of Technology, School of Computing, January 2012.</td>
+<td>Not mentioned</td>
+<td>8 variants of a Hospital system modeled as UML class diagrams. The system handles services within the hospital and describes the role of the hospital staff, its wards, different types of patients, and more. </td>
+<td>Industrial</td>
+<td>No</td>
+<td>models</td>
+<td>UML class diagrams</td>
+<td>model merging</td>
+<td>No</td>
+<td>heuristic algorithm</td>
+<td></td>
+<td>8</td>
+<td></td>
+<td>221 classes in all eight models, with an average of 27.63 classes per model.</td>
+<td>18 classes</td>
+<td>38 classes</td>
+<td>created manually</td>
+<td>views of different stakeholders</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Image Memory Handler (IMH)</td>
+<td>Kolb et al. 2006</td>
+<td></td>
+<td></td>
+<td>Image Memory Handler "used in Ricoh’s current products of office appliances such as copier machines, printers, and multi-functional peripherals. It is responsible for controlling memory usage and compressing and decompressing image data."  Objective of the case study: "Improve systematically the design and implementation of an existing software component in order to reuse it in a software product line". </td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>C</td>
+<td>Feature identification, refactoring</td>
+<td>No</td>
+<td>Refactoring, clone detection, manual work. Fraunhofer PuLSETM-DSSA—an approach for defining domain-specific software architectures (DSSA) and product-line architectures.</td>
+<td>The source code was already annotated with ifdefs.</td>
+<td>1</td>
+<td>N/A</td>
+<td>199 572 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>309 "According to their names, however, only a portion of them are used for variability purposes, whereas many others serve development aspects such as debugging or are used as include guards to prevent multiple header inclusion. Furthermore, many #if 0 or #if 1 preprocessor statements."</td>
+<td></td>
+<td>Few of them are shown in the Tables.</td>
+<td>Seems to be the ones from the ifdefs</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"Identification of the relevant stakeholders and roles, the selection and definition of the views"</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, documentation is mentioned as part of the analysis. However, they also reported "With respect to the variabilities realized by the component, there was no explicit information available. Neither was there information about which functions vary and how they vary, nor was there a complete and up-to-date overview of all the decisions and variabilities."</td>
+<td>4 months, 5 people (2 researchers, 2 students, 1 domain expert)</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Images example</td>
+<td>Martinez et al. SPLC 2015</td>
+<td></td>
+<td><a href="https://github.com/but4reuse/but4reuse/wiki/Examples" target="_blank">BUT4Reuse examples</a></td>
+<td>Four images of pixel art representing the same character with different clothes. Used to illustrate the generic approach supported by the Bottom-Up Technologies for Reuse framework.</td>
+<td>Illustrative</td>
+<td>Yes</td>
+<td>Media</td>
+<td>PNG images</td>
+<td>Feature identification, feature constraints discovery, feature model synthesis, reusable assets construction</td>
+<td>Yes</td>
+<td>Overlap analysis</td>
+<td></td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>11</td>
+<td>7</td>
+<td>Yes</td>
+<td>Manually</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>100%</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td>2</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Industrial Automation System</td>
+<td>Breivold et al. 2008</td>
+<td></td>
+<td></td>
+<td>A single system decomposed in reusable assets to migrate to SPL. "The trigger was to improve software quality and enable distributed product development." </td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>C and C++</td>
+<td>Feature identification, feature location, reusable assets extraction</td>
+<td>No</td>
+<td>Manual analysis of existing documentation, implementations and workshops with the stakeholders.</td>
+<td>The single system was delivered even when some functionalities were not needed.</td>
+<td>1</td>
+<td>N/A</td>
+<td>3000000 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>The definition of the PLA is part of their approach. Manual definition.
+<td></td>
+</tr>
+
+<tr>
+<td>In-Flight Entertainment System</td>
+<td>Martinez et al. ASE 2015</td>
+<td></td>
+<td><a href="https://github.com/but4reuse/but4reuse/wiki/Examples" target="_blank">BUT4Reuse examples</a></td>
+<td>Variants created manually from an original model by removing model elements related to features. The original model is intended to be similar to an industrial one by the Capella tool providers, however, it is an incomplete model.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Model</td>
+<td>Capella models</td>
+<td>Feature identification</td>
+<td>Yes</td>
+<td>FCA</td>
+<td></td>
+<td>3</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Manually by removing features from a maximum model.</td>
+<td>No</td>
+<td>3</td>
+<td>2</td>
+<td>Yes</td>
+<td>Manually</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td>2</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>Yes, CVL fragments</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Insurance Policy</td>
+<td>Nie et al. 2012</td>
+<td>The authors refer to Schirmeier et al. Tailoring infrastructure software product lines by static application analysis, SPLC, but no mention of this model is found. In SPLOT we can find FM related to insurance but the reported number of features does not correspond.</td>
+<td></td>
+<td>Two variants of a feature model</td>
+<td>N/A</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Diff and merge</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>21 features</td>
+<td>20 features</td>
+<td>23 features</td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>I-Trust</td>
+<td>Lohar et al. 2013</td>
+<td></td>
+<td>Broken link: coest.org , Requirements are found here: <a href="https://github.com/CoEST/TraceLab/blob/f53ebc391976a870331242433570dc808cc75cdd/Main/Data/challenge1_HIPPA/HIPPA/5iTrust.xml" target="_blank">link</a></td>
+<td></td>
+<td>Open source</td>
+<td>No, authors include reference but not available anymore</td>
+<td>Documentation</td>
+<td>Requirements</td>
+<td>Feature location, traceability recovery</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>131 requirements linked to source code</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>J2ME Games Product Line</td>
+<td>Kulesza et al. 2007</td>
+<td>Alves et al. Extracting and Evolving Mobile Games Product Lines SPLC 2005</td>
+<td></td>
+<td>J2ME games are mainstream mobile applications of considerable complexity</td>
+<td>Academic</td>
+<td>No</td>
+<td>Configuration Model, Architectural Model</td>
+<td>OO source code + extension join points (EJPs)</td>
+<td>Mapping of Features to Source code</td>
+<td></td>
+<td>AOP, Model transformation</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>jasmine</td>
+<td>Rodriguez Santos et al. 2016</td>
+<td>Silva et al. SANER 2015</td>
+<td>The original system: <a href="http://aserg.labsoft.dcc.ufmg.br/qualitas.js/" target="_blank">Qualitas.js Dataset</a>  The extracted SPLs: <a href="https://github.com/riselabs-ufba/RiPLE-HC-ExperimentalData" target="_blank">Github</a></td>
+<td>Some characteristic in the "features list" of the open-source (sometimes available in the project web site) were extracted from a single product and a feature model and SPL were created. The objective was to show RIPLE-HC capability to implement javascript SPLs. </td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Javascript</td>
+<td>Feature identification, Feature location, Feature Model Synthesis, Reusable assets construction</td>
+<td>No</td>
+<td>Manual feature identification and extraction.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>2956 LOC, 48 Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4</td>
+<td></td>
+<td>Yes</td>
+<td>Manually from project descriptions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Information in the manually extracted reusable assets</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>No constraints</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Syntactically valid. Behavior was not checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Java Buffer Library</td>
+<td>Damaševičius et al. 2012</td>
+<td></td>
+<td><a href="http://www.oracle.com/technetwork/java/javase/source-license-137365.html" target="_blank">Link</a></td>
+<td>It is a "part of JDK 1.5 class library (package java.nio.*)". "The Java Buffer library is a benchmark source code component used by researchers in the area of program analysis, generalization and meta-programming research."</td>
+<td>Open source</td>
+<td>Yes, but requires some actions such as registering and accepting the Java Research License</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location, Feature model synthesis</td>
+<td>Yes</td>
+<td>Dependency graph analysis, clustering</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>4 Java classes manually selected from the 74 classes of the Library</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>73</td>
+<td>12</td>
+<td>No, only numbers</td>
+<td>Dependency graph analysis and clustering</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Jbook</td>
+<td>Santos et al. 2013</td>
+<td></td>
+<td><a href="https://sourceforge.net/projects/jbookweb/" target="_blank">JBook</a>  and <a href="http://homepages.dcc.ufmg.br/~figueiredo/spl/extraction/" target="_blank">link</a></td>
+<td>A library management system</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature location</td>
+<td></td>
+<td>Test-based feature location. Location of feature seed. Use cases and requirements analysis.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>1 KLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Not mentioned, at least 21 shown in feature model excerpt</td>
+<td></td>
+<td>Yes, only of some of them</td>
+<td>Manually by the domain experts</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, one requires constraint</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Partial feature model is shown</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, UML use cases and requirements</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>JForum</td>
+<td>Yang et al. 2009</td>
+<td></td>
+<td><a href="http://jforum.net/" target="_blank">JForum</a></td>
+<td>Forum system used to manually identify features</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java and SQL statements</td>
+<td>Feature identification, feature model synthesis</td>
+<td>No, no feature model provided</td>
+<td></td>
+<td>Feature names or feature model not found.</td>
+<td>1</td>
+<td>N/A</td>
+<td>33123 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>68</td>
+<td></td>
+<td>No</td>
+<td>Manually by graduates</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>It takes two graduates who are familiar with forum systems two weeks to separately finish analysis for all the three variants (JForum, JGossip and MVNForum).</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>JGossip</td>
+<td>Yang et al. 2009</td>
+<td></td>
+<td><a href="https://sourceforge.net/projects/jgossipforum/" target="_blank">JGossip</a></td>
+<td>Forum system used to manually identify features</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java and SQL statements</td>
+<td>Feature identification, feature model synthesis</td>
+<td>No, no feature model provided</td>
+<td></td>
+<td>Feature names or feature model not found.</td>
+<td>1</td>
+<td>N/A</td>
+<td>33507 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>54</td>
+<td></td>
+<td>No</td>
+<td>Manually by graduates</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>It takes two graduates who are familiar with forum systems two weeks to separately finish analysis for all the three variants (JForum, JGossip and MVNForum).</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>JHipster</td>
+<td>Halin et al.</td>
+<td></td>
+<td><a href="https://github.com/axel-halin/Thesis-JHipster" target="_blank">JHipster SPL</a></td>
+<td>JHipster is a Web-app configurator that can be customized. It uses a customization approach that can be mapped to an SPL approach. The output is a set of different technologies of different artefact types.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java (with Spring Boot) in the server side. AngularJS and Bootstrap (a HTML/CSS and Javascript framework)</td>
+<td>Feature constraints discovery, Feature model synthesis</td>
+<td>Yes</td>
+<td>Manual reengineering</td>
+<td>This is a refactoring of an already feature-based configurable system</td>
+<td>It was already a customizable tool</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Variants can be created from the extracted SPL</td>
+<td></td>
+<td>48</td>
+<td>44</td>
+<td>Yes</td>
+<td>Manually from existing "questionnaire files" used for customization</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, manually from existing "questionnaire files" used for customization</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Yes, JUnit. They also collect the log of the results.</td>
+<td>From testing assets</td>
+<td></td>
+<td></td>
+<td>Yes, JHipster github</td>
+<td>Results and log of the generation compilation build process</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>JHotDraw</td>
+<td>Trifu 2010, Olszak and Jørgensen 2012</td>
+<td>Ceccato et al. A Qualitative Comparison of Three Aspect Mining Techniques IWPC 2005</td>
+<td><a href="http://www.jhotdraw.org/" target="_blank">JHotDraw</a></td>
+<td>JHotDraw is a framework for the creation of drawing editors, ranging from simple graphical editors to more complex domain-specific diagram editors, supporting behavioural constraints on how their elements can be used and altered.</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Requirements and Source code</td>
+<td>Java</td>
+<td>Mapping of Requirements to Implementations</td>
+<td>No</td>
+<td>Graph-based, Execution Tracing</td>
+<td></td>
+<td>2, consecutive releases of JHotDraw, namely release versions 5.3 and 5.4b1.</td>
+<td></td>
+<td>LOC 5.3=27628, 5.4=39565 / 7.2=62 KLOC</td>
+<td></td>
+<td></td>
+<td>evolution of the system</td>
+<td></td>
+<td>17 concerns / 7.2 = 59 features</td>
+<td></td>
+<td>Requirements</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>KePlast platform</td>
+<td>Linsbauer et al. 2014</td>
+<td>Angerer et al. Identifying inactive code in product lines with configuration-aware system dependence graphs SPLC 2014</td>
+<td><a href="http://www.keba.com" target="_blank">KePlast</a></td>
+<td>Industrial automation systems SPL. Focus on the ClosureUnit component.</td>
+<td>Industrial</td>
+<td>No, but a feature model of a selected component is presented</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location, Feature model synthesis</td>
+<td>No</td>
+<td>Dependency graph analysis</td>
+<td></td>
+<td>15 generated from the company configurator</td>
+<td>Not defined</td>
+<td>Not mentioned</td>
+<td>53000 LOC</td>
+<td>58000 LOC</td>
+<td>Existing generator</td>
+<td></td>
+<td>24</td>
+<td>20</td>
+<td>Yes</td>
+<td>Manually analysing the generator and refining with domain experts</td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td>100% precision when using 15 generated variants</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Labor Market Monitoring Software Product Line (LMMSPL)</td>
+<td>Shao et al. 2013</td>
+<td></td>
+<td></td>
+<td>"The applications collect and analysis regional employment and unemployment information for the local governments."</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Requirements and Source code</td>
+<td>Text and Java</td>
+<td>Traceability, feature location</td>
+<td></td>
+<td>Latent semantic indexing, clustering</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>70 pages of Requirements, 468 Java files</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Library</td>
+<td>Reinhartz-Berger et al. 2014 Analyzing Variability of Software Product Lines Using Semantic and Ontological Considerations</td>
+<td></td>
+<td><a href="http://mis.hevra.haifa.ac.il/~iris/research/SOVA/" target="_blank">SOVA</a></td>
+<td>A set of requirements of a university library management system</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Requirements</td>
+<td>Text documents</td>
+<td>Feature model synthesis</td>
+<td>No, SOVA tool not found</td>
+<td>Semantic and Ontological Variability Analysis</td>
+<td>Same domain as Chen et al. 2005</td>
+<td>1</td>
+<td></td>
+<td>10 requirements. The inputs are requirements of a single system.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Two feature models from an structural and functional perspective. Around 54 features.</td>
+<td>Around 49</td>
+<td>Yes</td>
+<td>Automatically from their approach.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, automatically derived</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Library management systems</td>
+<td>Chen et al. 2005</td>
+<td>Hsia et al. Another approach to system decomposition: requirements clustering</td>
+<td></td>
+<td></td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Requirements</td>
+<td>Text file</td>
+<td>Feature identification</td>
+<td>No</td>
+<td>Similarity analysis, graph analysis, clustering</td>
+<td>Same domain as Reinhartz-Berger et al. 2014</td>
+<td>1</td>
+<td>N/A</td>
+<td>21 requirements</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>36 synthetised with their approach</td>
+<td>3</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>LinkedList</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>Authors mention these websites but it is not found <a href="http://www.fosd.de/fh" target="_blank">link</a>, <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td></td>
+<td>N/A</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>27 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Linux kernel</td>
+<td>She et al. 2011, Xue et al. 2012, Peng et al. 2013, Xue 2012, She 2013, Nadi et al. 2015</td>
+<td>T. Berger, S. She, R. Lotufo, A. W asowski, and K. Czarnecki. Variability modeling in the real: A perspective from the operating systems domain. In ASE, 2010. - M.W. Godfrey and Q. Tu. Evolution in open source software: a case study. ICSM 2000, pp.131-140.</td>
+<td><a href="https://github.com/torvalds/linux" target="_blank">Linux</a> - <a href="http://www.kernel.org" target="_blank">Kernel</a> </td>
+<td>Linux is an open-source general purpose OS created in the early 1990’s. It has a feature model specified in the Kconfig language [20] for configuring features in its kernel.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code= x86 Linux 2.6.28.6, code units, static program model (graph)</td>
+<td>C</td>
+<td>Feature Model extraction, Feature location, Feature model synthesis</td>
+<td>Linux variability analysis tools <a href="code.google.com/p/linux-variability-analysis-tools" target="_blank">google code</a> or <a href="https://github.com/shshe/linux-variability-analysis-tools" target="_blank">Github</a> </td>
+<td>ranking heuristic for identifying parent candidates and also automated procedures for identifying mandatory features, feature groups and implies/excludes edges</td>
+<td>nine product variants derived from three stable releases of the Linux kernel 2.6.27, 2.6.31, 2.6.37 released on December 14 th, 2008, December 18 th , 2009, and January 5 th , 2011, respectively.</td>
+<td>9 Linux kernel product variants consist of 3146 features</td>
+<td></td>
+<td>about 342K code units (342729 code units) / 12 million lines of code, 2000 directories and 28,024 files, and 155,266 C functions. Furthermore, Linux kernel contains about 700 Kconfig</td>
+<td>17622 code units</td>
+<td>55585 code units</td>
+<td>Kconfig language</td>
+<td></td>
+<td>The Linux feature model has over 5000 features / 3146 features / consisting of 6052 features and 1,410,830 interdependencies</td>
+<td></td>
+<td>Yes = Xue et al. 2012</td>
+<td>Kconfig</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes = The Kconfig model, makefiles, and C preprocessors used by Linux kernel allow us to establish the ground truth links between features and their implementing code units.</td>
+<td>Yes = Peng et al. 2013</td>
+<td>Yes = Kconfig</td>
+<td>There is information of interdependencies (Kconfig)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+<td>yes</td>
+<td>Yes = The Kconfig model, makefiles, and C preprocessors used by Linux kernel allow us to establish the ground truth links between features and their implementing code units.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>LLVMCompiler</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>Authors mention these websites but it is not found <a href="http://www.fosd.de/fh" target="_blank">link</a>, <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td></td>
+<td>N/A</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>Not found</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>12 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Microsoft Dynamics AX</td>
+<td>Nöbauer et al. 2014b, 2014a</td>
+<td></td>
+<td><a href="https://www.microsoft.com/en-us/dynamics365/ax-overview" target="_blank">Website</a></td>
+<td>"Dynamics AX is a business software solution from Microsoft for medium to large enterprises. Partners, such as InsideAx, configure, customize and sell the ERP product to customers"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Configuration settings</td>
+<td>XML files</td>
+<td>Assessment of reuse potential, similarity analysis</td>
+<td>No</td>
+<td>Similarity analysis</td>
+<td></td>
+<td>5</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td>"He first selected five customized products which are all derived from the same base product but operating in different industry branches (construction, retail, and manufacturing)."</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Microwave Oven</td>
+<td>Rubin 2014</td>
+<td>Hassan Gomaa. Designing Software Product Lines with UML: From Use Cases to Pattern-Based Software Architectures. Addison-Wesley, 2004.</td>
+<td></td>
+<td>Software products for Microwave Oven</td>
+<td>Illustrative</td>
+<td>Yes, in the thesis</td>
+<td>Models</td>
+<td>Uml Class and UML Statechart models</td>
+<td>Detection, Analysis, Transformation</td>
+<td>No</td>
+<td>Structural Similarity, Set Theory</td>
+<td></td>
+<td>4</td>
+<td></td>
+<td>2 clases per variant</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Mobile Phone</td>
+<td>AraÂ´ujo et al. 2013, Nie et al. 2012, Li et al. 2007, Gharsellaoui et al. 2015</td>
+<td>Segura et al. Automated Merging of feature models using graph transformations</td>
+<td></td>
+<td>This is an academic case study of a mobile phone feature model. We can find it in different works with different number of features. The mentioned original publication presents 2 variants to be merged.  "FMs of the two families of products of the company".</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td></td>
+<td>Diff and merge</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>16 features</td>
+<td>15 features</td>
+<td>18 features</td>
+<td>Manually for the academic example</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>MobileMedia</td>
+<td>AL-Msie'Deen et al. 2013, Eyal-Salman et al. 2012, 2013b, 2014, Linsbauer et al. 2013, Mefteh et al. 2014, Tang and Leung 2015, Maazoun et al. 2014a, Shatnawi et al. ICSR 2015</td>
+<td>Figueiredo et al. ICSE 2008. Evolving Software Product Lines with Aspects: An Empirical Study on Design Stability</td>
+<td><a href="http://mobilemedia.cvs.sf.net/" target="_blank">MobileMedia</a>, <a href="http://ptolemy.cs.iastate.edu/design-study/" target="_blank">Design study</a>, <a href="http://homepages.dcc.ufmg.br/~figueiredo/spl/icse08/" target="_blank">link</a></td>
+<td>Different releases of a single-system. Maazoun et al. 2014 uses a case study similar to mobilemedia with 9 variants but it cannot be found.</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature location, feature model synthesis, extraction of reusable assets</td>
+<td></td>
+<td>Overlap analysis, formal context analysis, hierarchical clustering, Dependency graphs, information retrieval</td>
+<td>Different variants are used in the studies</td>
+<td>8</td>
+<td></td>
+<td>1698 LOC</td>
+<td>760 LOC</td>
+<td>2645 LOC</td>
+<td>Evolution of a system, different releases containing new implemented features.</td>
+<td>No</td>
+<td>7 in Alm'siedeen et al.</td>
+<td>5</td>
+<td>Yes</td>
+<td>Manually by the authors of the feature identification process</td>
+<td></td>
+<td>No</td>
+<td>To be checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ModelAnalyzer</td>
+<td>Fischer et al. 2014</td>
+<td><a href="http://www.jku.at/isse/content/e139529/e126342/e126449" target="_blank">Check website</a></td>
+<td><a href="http://www.jku.at/isse/content/e139529/e126342/e126449" target="_blank">Check website</a></td>
+<td>Consistency checker and repair for models.</td>
+<td>Open source</td>
+<td>Not found</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Overlap analysis, graphs analysis</td>
+<td>The ModelAnalyzer tool is available in the website but the used variants or generator is not found. The authors mention bug fixes and evolutions to separated variants.</td>
+<td>5</td>
+<td>N/A</td>
+<td>47 KLOC approx</td>
+<td>35 KLOC</td>
+<td>59 KLOC</td>
+<td></td>
+<td></td>
+<td>13</td>
+<td></td>
+<td>Not found</td>
+<td>Not found</td>
+<td></td>
+<td></td>
+<td>Yes, the authors mention "evolutionary changes or bug fixes that have only been applied to some of the products"</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>MOTIV video generator SPL</td>
+<td>Temple et al. SPLC 2016</td>
+<td>Acher et al. ViViD: A Variability-Based Tool for Synthesizing Video Sequences, SPLC 2014</td>
+<td><a href="https://github.com/ViViD-DiverSE" target="_blank">Link</a> and <a href="http://mao2013.github.io/VM/" target="_blank">link</a></td>
+<td>An SPL that generates variants of video sequences with different characteristics (e.g., filters). Then an oracle exists to determine if a given configuration is valid or not</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Media</td>
+<td>Videos</td>
+<td>Feature constraints discovery</td>
+<td>No</td>
+<td>Machine learning</td>
+<td></td>
+<td>500 (randomly generated from the SPL)</td>
+<td>"a total of 10^103 configurations (not considering constraints)"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Generated from the SPL</td>
+<td></td>
+<td>20 Boolean features, 46 integer attributes, 42 real attributes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>140 constraints but more wants to be discovered for a specific video algorithm</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>MVNForum</td>
+<td>Yang et al. 2009</td>
+<td></td>
+<td><a href="https://sourceforge.net/projects/mvnforum/" target="_blank">MVNForum</a></td>
+<td>Forum system used to manually identify features</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java and SQL statements</td>
+<td>Feature identification, feature model synthesis</td>
+<td>No, no feature model provided</td>
+<td></td>
+<td>Feature names or feature model not found.</td>
+<td>1</td>
+<td>N/A</td>
+<td>105119 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>141</td>
+<td></td>
+<td>No</td>
+<td>Manually by graduates</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>It takes two graduates who are familiar with forum systems two weeks to separately finish analysis for all the three variants (JForum, JGossip and MVNForum).</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Notepad SPL</td>
+<td>Ziadi et al. 2014</td>
+<td></td>
+<td><a href="http://featureide.cs.ovgu.de" target="_blank">Feature IDE</a> examples. Notepad Java, not Notepad Java 2</td>
+<td></td>
+<td>Illustrative</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification</td>
+<td>Yes</td>
+<td>Overlap analysis, feature identification</td>
+<td></td>
+<td>N/A</td>
+<td>8</td>
+<td>806 LOC</td>
+<td></td>
+<td></td>
+<td>Generated from the SPL</td>
+<td>No</td>
+<td>4</td>
+<td>3</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>PCM Dataset</td>
+<td>Bécan et al. 2013</td>
+<td>N. Sannier, M. Acher, and B. Baudry, “From Comparison Matrix to Variability Model: The Wikipedia Case Study,” in ASE’13. IEEE, 2013.</td>
+<td></td>
+<td>Large FMs extracted from product comparison matrices (PCMs) found in Wikipedia</td>
+<td>Academic</td>
+<td>No</td>
+<td>Feature combinations</td>
+<td>product comparison matrices (PCMs) found in Wikipedia</td>
+<td>Detection, Analysis, Transformation</td>
+<td>No</td>
+<td>Heuristics</td>
+<td></td>
+<td>30 FMs with an automated extraction process</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>PKJab</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td><a href="http://www.fosd.de/fh" target="_blank">Link </a> and download superimposition examples</td>
+<td>Chat messenger SPL developed by P. Wendler (U Passau)</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>12 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Pooka Email Client</td>
+<td>Ali et al. 2011</td>
+<td></td>
+<td>Single system: <a href="http://www.suberic.net/pooka/" target="_blank">link</a>. Some data from the extraction: <a href="http://www.ptidej.net/downloads/replications/icsm11a/" target="_blank">link</a></td>
+<td>A mailing system that wants to be decomposed in features to be used in mobile devices. They call it miniaturization of a given system.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature constraints discovery, reusable assets extraction</td>
+<td>No, there are some information in the mentioned website but we were not able to find the feature names or download the traceability tool.</td>
+<td>Information retrieval for feature location</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>244870 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>93 functional and 25 non-functional </td>
+<td></td>
+<td>Not found</td>
+<td>Analysing pre-requirements of the customers and stakeholders</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>40% correct feature traces, i.e., 128 traces</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Manual Time: We took ∼ 135 hours to recover the 318 feature traces for Pooka. Automatic Time: It took us ∼ 21 to generate and to manually validate the feature traces and corresponding features for Pooka.</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Power control and protection system</td>
+<td>Breivold et al. 2008</td>
+<td></td>
+<td></td>
+<td>Different teams sharing a core, overlapping features, lack of traceability of product features. "The main trigger was to build a common platform that can be shared between two business units and enable component reusability"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>C and C++</td>
+<td>Feature identification, feature location, reusable assets extraction</td>
+<td>No</td>
+<td>Manual analysis of existing documentation, implementations and workshops with the stakeholders.</td>
+<td>Different teams, overlapping features, lack of traceability of product features</td>
+<td>More than 1 (number not mentioned)</td>
+<td>N/A</td>
+<td>2000000 LOC</td>
+<td></td>
+<td></td>
+<td>A core was shared in the organization and then different teams start building the variants from this core without a formalized approach to reuse previous features implemented in other variants.</td>
+<td>They report overlapping features implemented by different development teams.</td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>The definition of the PLA is part of their approach. Manual definition.
+<td></td>
+</tr>
+
+<tr>
+<td>Prevayler</td>
+<td>Linsbauer et al. 2014, Tang and Leung 2015</td>
+<td><a href="http://prevayler.org/" target="_blank">Prevayler</a></td>
+<td><a href="http://spl2go.cs.ovgu.de/projects" target="_blank">SPL2Go</a></td>
+<td>In-memory database</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>6 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Printworks</td>
+<td>Li et al. 2005</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>CSharp</td>
+<td>Feature identification, feature location</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Only an excerpt is shown with 8 features</td>
+<td></td>
+<td>Only the ones in the excerpt</td>
+<td>Manually by them</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Project Management tools</td>
+<td>Noor et al. 2008</td>
+<td></td>
+<td><a href="http://sourceforge.net/projects/ganttproject" target="_blank">Ganttproject</a>  <a href="http://sourceforge.net/projects/projectfactory" target="_blank">Project factory</a> </td>
+<td>Two projects of the project management domain where we can check the reuse potential of its logical components to create a new PL in this domain. "A group of three domain experts developed a product map containing 120 features, 14 domains and three products for the project management domain." and then they tried to locate these features in these systems. First the identified reusable features (logical components) and then they mapped them to their initial list.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, Feature location, Assessment of reuse potential</td>
+<td>No</td>
+<td>Manual (Look at the source code packages and identify possible logical components based on your experience, they call it thinklet LeafHopper)</td>
+<td></td>
+<td>2</td>
+<td>N/A</td>
+<td>46 KLOC</td>
+<td>Project Factory is 16 packages, 140 classes and 29 KLOC</td>
+<td>Gantt Project is 51 packages, 492 classes and is 63 KLOC</td>
+<td>The variants are two independent open-source projects of the same domain.</td>
+<td>Independently created. Both in Java.</td>
+<td>23 logical components identified in the Gantt project that might correspond to features</td>
+<td></td>
+<td>Yes</td>
+<td>Manually</td>
+<td>Only in 1 of them, the other is not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>QlikView</td>
+<td>Nöbauer et al. 2014b</td>
+<td></td>
+<td></td>
+<td>"a product for data analysis and business intelligence." </td>
+<td>Industrial</td>
+<td>No</td>
+<td>Configuration settings</td>
+<td>XML file</td>
+<td>Assessment of reuse potential, similarity analysis</td>
+<td>No</td>
+<td>Similarity analysis</td>
+<td></td>
+<td>54 from 12 customers in 6 different industry branches</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"Business intelligence applications such as QlikView are built in tight collaboration with the customers’ decision makers, and therefore are more individual than a standard software product. Still, domain experts at InsideAx believe there is a common set of recurring QlikView measures on most business "areas and industry branches. </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>SELEX Sistemi Integrati Systems</td>
+<td>Falessi et al. 2010</td>
+<td></td>
+<td><a href="https://en.wikipedia.org/wiki/SELEX_Sistemi_Integrati" target="_blank">SELEX</a></td>
+<td>A company in the defense and aerospace domain " started the development of five different products (systems of systems)"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Requirements</td>
+<td>Text documents</td>
+<td>Feature identification, Similarity analysis</td>
+<td>No, but tools mentioned PROUD, Proactive Reuse OpportUnity Discovery tool: <a href="http://eseg.uniroma2.it/tools/PROUD/index.htm" target="_blank">PROUD</a>. ANTARCTICA, Automatic characterizatioN of naTural lAnguage pRoCessing meThods for estimatIng semantiC similarity: <a href="http://eseg.uniroma2.it/tools/ANTARCTICA/index.htm" target="_blank">Antarctica</a> </td>
+<td>Natural language processing</td>
+<td>Case study used to check the results of requirements similarity approaches.</td>
+<td>5</td>
+<td>N/A</td>
+<td>496 Requirements. 2483 for the 5 variants</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>SensorNetwork</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>The authors mention these links but this was not found <a href="http://www.fosd.de/fh" target="_blank">link</a> , <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td></td>
+<td>N/A</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>27 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ShirtsMyWay web configurator</td>
+<td>Abbasi et al. 2014</td>
+<td></td>
+<td>Broken link to data: <a href="http://info.fundp.ac.be/∼eab/result.html" target="_blank">link</a>. <a href="http://www.shirtsmyway.com" target="_blank">ShirtsMyWay</a></td>
+<td>"A configurator that allows customers to design their shirts"</td>
+<td>Industrial</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Web</td>
+<td>Feature model synthesis</td>
+<td>No</td>
+<td>Crawling the web configuration and extracting data patterns in the websites</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Siemens VAI MSS tool</td>
+<td>Grünbacher et al. Model-Based Customization and Deployment of Eclipse-Based Tools: Industrial Experiences, ASE 2009</td>
+<td></td>
+<td></td>
+<td>MSS (Maintenance and Setup Systems) tool. An "Eclipse Rich-Client Platform used by developers and metallurgists to supervise and maintain the CC-L2 automation system." "Applying product line concepts in our tool development processes"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Components</td>
+<td>Eclipse plugins</td>
+<td>Feature identification, feature location, feature constraints discovery, variability model synthesis, reusable assets extraction</td>
+<td>No</td>
+<td>Manual analysis</td>
+<td>"Adapted to 20+ customer environments per year". The analysis only consisted at the level of plugins.</td>
+<td>1</td>
+<td></td>
+<td>More than 100 plugins with around 200 KLOC. 20 Eclipse features already defined.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Not mentioned</td>
+<td></td>
+<td>No, a partial view of the decision model in the paper and some names in the text</td>
+<td>Manual</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>SIP Communicator</td>
+<td>Ali et al. 2011</td>
+<td></td>
+<td>Single system: <a href="https://jitsi.org/" target="_blank">link</a>. Some data from the extraction: <a href="http://www.ptidej.net/downloads/replications/icsm11a/" target="_blank">link</a> </td>
+<td>A web-based communication system that wants to be decomposed in features to be used in mobile devices. They call it miniaturization of a given system.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature constraints discovery, reusable assets extraction</td>
+<td>No, there are some information in the mentioned website but we were not able to find the feature names or download the traceability tool.</td>
+<td>Information retrieval for feature location</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>486966 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>82 functional, 20 non-functional</td>
+<td></td>
+<td>Not found</td>
+<td>Analysing pre-requirements of the customers and stakeholders</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>44% correct feature traces, i.e., 63 traces</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Manual Time: We took ∼ 171 hours to recover the 830 feature traces for SIP. Automatic Time: It took us ∼ 30 hours to generate and to manually validate the feature traces and corresponding features for SIP.</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Smart Home</td>
+<td>Araujo et al. 2013, Alves et al. 2008, Weston et al. 2009</td>
+<td>K. Pohl, G. Bockle, and F. J. van der Linden, Software Product Line Engineering: Foundations, Principles and Techniques. 2005.</td>
+<td><a href="http://www.ample-project.net/" target="_blank">Ample project</a></td>
+<td>The Smart Home case study defines a SPL targeted to embedded systems, in the context of home automation. SPL for houses with devices and sensors interacting with its inhabitants in order to achieve comfort, safety, and security goals</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Requirements</td>
+<td>UML + AOP</td>
+<td>Design process of SPLs. Discovery of FMs</td>
+<td>No</td>
+<td>Heuristics, Model transformation, Clustering</td>
+<td><a href="https://www.utwente.nl/ewi/trese/research_projects/Ample/" target="_blank">Link</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Weston et al. 2009</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Softpedia Repository</td>
+<td>Hariri et al. 2013, Yu et al. 2013, Bagheri et al. 2012</td>
+<td>Bagheri et al. 2012</td>
+<td><a href="http://www.softpedia.com/" target="_blank">Softpedia</a></td>
+<td>Softpedia.com indexes hundreds of thousands of software products.</td>
+<td>Public Repository</td>
+<td>Yes</td>
+<td>Product descriptions</td>
+<td>Feature descriptors</td>
+<td>Features Recommendation</td>
+<td></td>
+<td>Clustering, rule-based, k-means</td>
+<td></td>
+<td>117,265 products</td>
+<td></td>
+<td>493,347 feature descriptors were retrieved from 117,265 products, categorized under 21 categories and 159 sub categories.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>493,347 feature descriptors</td>
+<td></td>
+<td>feature descriptions</td>
+<td>From products description</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>SPLOT Feature Models</td>
+<td>She et al. 2014, Bécan 2013, Bécan et al. 2013, Haslinger et al. 2011, Lopez-Herrejon et al. 2015</td>
+<td>Mendonca et al.: S.P.L.O.T. - Software Product Lines Online Tools. OOPSLA 2009 Companion volume.</td>
+<td><a href="http://www.splot-research.org/" target="_blank">SPLOT</a></td>
+<td>Online repository of feature models created by very diverse authors</td>
+<td>Public Repository</td>
+<td>Yes</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td></td>
+<td>Very diverse, each author uses this repository in their own way.</td>
+<td>We cannot consider this as variants.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Statemachine metamodels</td>
+<td>Mendez et al.</td>
+<td>M. Crane and J. Dingel. Uml vs. classical vs. rhapsody statecharts: not all models are created equal. Software & Systems Modeling, 6(4), 2007</td>
+<td><a href="https://github.com/damenac/puzzle/tree/master/examples/demo-ICSR" target="_blank">Github</a></td>
+<td>Variants of Statechart meta-models and its operational semantics used to extract Language modules.</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Models and Source Code</td>
+<td>Meta-models as Ecore models with operational semantics in Java</td>
+<td>Feature identification, Reusable assets construction</td>
+<td>Yes</td>
+<td>Overlap analysis</td>
+<td>They intentionally call Modules the extracted assets instead of Features. However, we put them as number of features. The tool for the analysis is available here: https://github.com/damenac/puzzle</td>
+<td>3</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td>No, they are just numbered Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Sudoku</td>
+<td>Tang and Leung 2015</td>
+<td>Apel, et al. Featurehouse: Language- independent, automated software composition. 2009</td>
+<td><a href="http://www.infosun.fim.uni-passau.de/spl/apel/fh/" target="_blank">Link</a>, download superimpositionExamples</td>
+<td>The sudoku puzzle game</td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature location, feature model synthesis, extraction of reusable assets</td>
+<td>JFeTkit (Java Feature Mining Tookit) not available</td>
+<td>Dependency graphs, information retrieval</td>
+<td>It is not clear if they use one variant or generated ones. Apparently 1.</td>
+<td>1</td>
+<td></td>
+<td>1975 LOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Avg. precision of 40% and avg. recall close to 100%</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Suppliers offerings</td>
+<td>Acher et al. 2012</td>
+<td>Hartmann et al. Supplier independent feature modelling SPLC 2009</td>
+<td><a href="https://nyx.unice.fr/projects/familiar/wiki/VariCell" target="_blank">VariCell</a></td>
+<td></td>
+<td>Illustrative</td>
+<td>Yes</td>
+<td>Documentation</td>
+<td>Table</td>
+<td>Feature identification, feature model synthesis</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>9 synthetised with their approach</td>
+<td></td>
+<td>Yes</td>
+<td>Using their heuristic</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Text Editing System SPL</td>
+<td>AL-Msie'Deen et al. 2012</td>
+<td></td>
+<td>Information: <a href="http://users.lirmm.fr/~seriai/encadrements/theses/rafat/index.php?n=Divers.TextEditingSystemSPL" target="_blank">link</a>   Variants: <a href="https://code.google.com/archive/p/texteditingsystem8/downloads" target="_blank">Link</a></td>
+<td>Variants of a text editing system.</td>
+<td>Academic</td>
+<td>No, links are broken <a href="http://users.lirmm.fr/~seriai/encadrements/theses/rafat/index.php?n=Divers.SourceCodeForAllReleases" target="_blank">link</a> , only one variant can be found <a href="https://code.google.com/archive/p/texteditingsystem8/downloads" target="_blank">link</a></td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature identification, feature location</td>
+<td>No</td>
+<td>Formal concept analysis and information retrieval (Latent Semantic Indexing)</td>
+<td>The feature model is presented with 72 possible configurations but 8 variants are provided.</td>
+<td>8</td>
+<td>N/A</td>
+<td>372 LOC in the available variant</td>
+<td></td>
+<td></td>
+<td>Not mentioned, manual</td>
+<td>No</td>
+<td>22</td>
+<td>11</td>
+<td>Yes</td>
+<td>Manual</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>TimelineJS</td>
+<td>Rodriguez Santos et al. 2016</td>
+<td>Leonardo Silva, Miguel Ramos, Marco Tulio Valente, Nicolas Anquetil, Alexandre Bergel. Does Javascript Software Embrace Classes? In 22nd International Conference on Software Analysis, Evolution and Reengineering (SANER) , pages 1-10, 2015.</td>
+<td>The original system: <a href="http://aserg.labsoft.dcc.ufmg.br/qualitas.js/" target="_blank">Qualitas.js Dataset</a>  The extracted SPLs: <a href="https://github.com/riselabs-ufba/RiPLE-HC-ExperimentalData" target="_blank">Github</a></td>
+<td>Some characteristic in the "features list" of the open-source (sometimes available in the project web site) were extracted from a single product and a feature model and SPL were created. The objective was to show RIPLE-HC capability to implement javascript SPLs. </td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Javascript</td>
+<td>Feature identification, Feature location, Feature Model Synthesis, Reusable assets construction</td>
+<td>No</td>
+<td>Manual feature identification and extraction.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>18237 LOC, 89 Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>15</td>
+<td></td>
+<td>Yes</td>
+<td>Manually from project descriptions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Information in the manually extracted reusable assets</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>2</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Syntactically valid. Behavior was not checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Traffic management systems</td>
+<td>Niu et al. 2014</td>
+<td></td>
+<td></td>
+<td>"A set of traffic management systems of a multidisciplinary organization offering services in many areas of practice, including transportation and systems. "</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Requirements</td>
+<td>Text documents</td>
+<td>Similarity, feature identification, reusable assets construction</td>
+<td>No</td>
+<td>Information retrieval, natural language processing</td>
+<td>Requirements follows the IEEE-830 standard in a textual form. Extracted reusable assets are called "functional requirements profiles (FRPs)"</td>
+<td>4</td>
+<td>N/A</td>
+<td>5884 kB file size</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Not mentioned</td>
+<td></td>
+<td>No, some of them are named in an OVM variability model.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, their approach was compared with manual analysis.</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Trek Bikes catalog</td>
+<td>Acher et al. 2012</td>
+<td>SPLOT feature configuration</td>
+<td><a href="https://nyx.unice.fr/projects/familiar/wiki/VariCell" target="_blank">VariCell</a>  <a href="http://www.splot-research.org/" target="_blank">SPLOT</a></td>
+<td>A catalog of Trek bikes with different characteristics</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Documentation</td>
+<td>CSV file</td>
+<td>Feature identification, feature model synthesis</td>
+<td></td>
+<td></td>
+<td>They conducted 3 experiments "to change the number of configurations and features"</td>
+<td>376</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Catalog</td>
+<td></td>
+<td>549</td>
+<td></td>
+<td>Yes</td>
+<td>Using their heuristic</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>uClibc</td>
+<td>Nadi et al. TSE 2015</td>
+<td></td>
+<td><a href="https://www.uclibc.org/" target="_blank">uClibc</a></td>
+<td>"uClibc is an alternative, resource-optimized C library for embedded systems", Customizable C code, KConfig variability model</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>C</td>
+<td>Feature constraints discovery</td>
+<td>Yes, <a href="https://bitbucket.org/tberger/farce" target="_blank">link</a></td>
+<td>Dependency analysis</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td> 1,628 Files</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>367</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, Kconfig model</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Vending Machine</td>
+<td>Martinez et al. 2014</td>
+<td>Istoan et al. Issues in model-driven behavioural product derivation. VAMOS 2011</td>
+<td><a href="https://github.com/but4reuse/but4reuse/wiki/Examples" target="_blank">BUT4Reuse examples</a></td>
+<td>Variants of statechart models of vending machines. Illustrative example.</td>
+<td>Illustrative</td>
+<td>Yes</td>
+<td>Model</td>
+<td>Yakindu SCT models</td>
+<td>Feature identification</td>
+<td>Yes</td>
+<td>Overlap analysis</td>
+<td></td>
+<td>6</td>
+<td>N/A</td>
+<td>20 classes, 19 attributes, 17 references</td>
+<td>18 classes, 17 attributes, 15 references</td>
+<td>23 classes, 22 attributes, 20 references</td>
+<td>Manual</td>
+<td>No</td>
+<td>7</td>
+<td>6</td>
+<td>Yes</td>
+<td>Manual</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>100%</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No constraints apart from requires to the core feature.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Video On Demand</td>
+<td>Linsbauer et al. 2013, Fischer et al. 2014</td>
+<td></td>
+<td>Broken link: <a href="http://www.sea.jku.at/traceability/source" target="_blank">link</a></td>
+<td>Linsbauer et al. "Simple video streaming applications"</td>
+<td>Academic</td>
+<td>No</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Overlap analysis, graph analysis</td>
+<td>"We generated all possible products and used them for evaluation."</td>
+<td>N/A</td>
+<td>32</td>
+<td></td>
+<td>4.7 KLOC</td>
+<td>5.2 KLOC</td>
+<td>Generated from an SPL</td>
+<td>No</td>
+<td>11</td>
+<td>5</td>
+<td>Not found</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>video.js</td>
+<td>Rodriguez Santos et al. 2016</td>
+<td>Leonardo Silva, Miguel Ramos, Marco Tulio Valente, Nicolas Anquetil, Alexandre Bergel. Does Javascript Software Embrace Classes? In 22nd International Conference on Software Analysis, Evolution and Reengineering (SANER) , pages 1-10, 2015.</td>
+<td>The original system: <a href="http://aserg.labsoft.dcc.ufmg.br/qualitas.js/" target="_blank">Qualitas.js Dataset</a>  The extracted SPLs: <a href="https://github.com/riselabs-ufba/RiPLE-HC-ExperimentalData" target="_blank">Github</a></td>
+<td>Some characteristic in the "features list" of the open-source (sometimes available in the project web site) were extracted from a single product and a feature model and SPL were created. The objective was to show RIPLE-HC capability to implement javascript SPLs. </td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Javascript</td>
+<td>Feature identification, Feature location, Feature Model Synthesis, Reusable assets construction</td>
+<td>No</td>
+<td>Manual feature identification and extraction.</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>7939 LOC, 38 Modules</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>13</td>
+<td></td>
+<td>Yes</td>
+<td>Manually from project descriptions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Information in the manually extracted reusable assets</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>2</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td></td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>Syntactically valid. Behavior was not checked.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Warehouse</td>
+<td>Rubin and Chechik, N-Way Model Merging 2013</td>
+<td>Y. T. Rad and R. Jabbari. Use of Global Consistency Checking for Exploring and Refining Relationships between Distributed Models: A Case Study. Master’s thesis, Blekinge Institute of Technology, School of Computing, January 2012.</td>
+<td>Not mentioned</td>
+<td>16 variants of a Warehouse system, modeled as UML class diagrams. The system is designed to handle orders, track their status, provide computer support for warehousing workers, keep track of inventory levels in the warehouse, etc. </td>
+<td>Industrial</td>
+<td>No</td>
+<td>Models</td>
+<td>UML class diagrams</td>
+<td>Model merging</td>
+<td>No</td>
+<td>Heuristic algorithm</td>
+<td></td>
+<td>16</td>
+<td></td>
+<td>24.25 classes, 388 elements in total</td>
+<td>15 classes</td>
+<td>44 classes</td>
+<td>Created manually</td>
+<td>Views of different stakeholders</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Washing Machine</td>
+<td>Rubin and Chechik 2010, Rubin 2014</td>
+<td>Rubin and Chechik 2010</td>
+<td></td>
+<td>Washing Machine which has several Wash programs.</td>
+<td>Illustrative</td>
+<td>Yes, in the thesis</td>
+<td>Model</td>
+<td>UML class diagram</td>
+<td>Detection, Analysis, Transformation</td>
+<td>No</td>
+<td>Structural Similarity, Set Theory</td>
+<td></td>
+<td>3</td>
+<td></td>
+<td>6 classes each product</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>WebStore</td>
+<td>Santos et al. 2013</td>
+<td>Ferreira et al. 2011 On the Use of Feature-Oriented Programming for Evolving Software Product Lines: A Comparative Study</td>
+<td><a href="http://homepages.dcc.ufmg.br/~figueiredo/spl/extraction/" target="_blank">Link</a></td>
+<td></td>
+<td>Academic</td>
+<td>Not found</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location</td>
+<td></td>
+<td>Test-based feature location. Location of feature seed. Use cases and requirements analysis.</td>
+<td>The authors said that the source code is available but it was not found. The feature model is shown in the paper.</td>
+<td>1</td>
+<td>N/A</td>
+<td>1 KLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>11</td>
+<td>4</td>
+<td>Yes</td>
+<td>Manually by domain experts</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>No constraints</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes, UML use cases and requirements</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wget</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>The authors mention these links but this was not found <a href="http://www.fosd.de/fh" target="_blank">link</a>, <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td>GNU Wget</td>
+<td>Open source</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td></td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>17 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wiki engines</td>
+<td>Acher et al. 2012</td>
+<td></td>
+<td><a href="http://www.wikimatrix.org/" target="_blank">Wikimatrix</a>,  <a href="http://www.wikimatrix.org/api/byproduct" target="_blank">link</a>, <a href="https://nyx.unice.fr/projects/familiar/wiki/VariCell" target="_blank">VariCell</a>  </td>
+<td>Information about wiki engines "Each wiki engine describes several characteristics classified in 16 categories (General, Media and Files, Usability, etc.)"</td>
+<td>Open source</td>
+<td>Yes</td>
+<td>Documentation</td>
+<td>XML file</td>
+<td>Feature identification, feature model synthesis</td>
+<td></td>
+<td></td>
+<td>They conducted 3 experiments "to change the number of configurations and features"</td>
+<td>154</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Catalog</td>
+<td></td>
+<td>22 synthetised with their approach</td>
+<td></td>
+<td>Yes</td>
+<td>Using their heuristic</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wingsoft Financial Management System</td>
+<td>Xue et al. 2010, Xue 2012</td>
+<td></td>
+<td></td>
+<td>A system for students to pay their University fees.</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Variability model and Source code</td>
+<td>Feature model (FM of each product, like a configuration with the relations between the features) and Source code</td>
+<td>Feature model synthesis, Feature lcoation, reusable assets extraction</td>
+<td>No</td>
+<td>Lexical and structural analysis, similarity analysis, feature model merging</td>
+<td></td>
+<td>4 (they were actually 26 but they took only 4 because they were minor changes)</td>
+<td></td>
+<td>30 features and 50KLOC</td>
+<td></td>
+<td></td>
+<td>"Developers copy-pasted and modified existing product variants when building a new product variant."</td>
+<td></td>
+<td>54 (shown in a figure)</td>
+<td>33</td>
+<td>Yes, and small description of each feature</td>
+<td>Domain experts</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>WV CCHIT Health</td>
+<td>Lohar et al. 2013</td>
+<td></td>
+<td>Broken link: coest.org   -> This works: <a href="https://github.com/CoEST/TraceLab" target="_blank">TraceLab</a> but not found. <a href="https://web.archive.org/web/20161007003734/http://www.coest.org/index.php/resources/dat-sets" target="_blank">Wayback machine:</a> not possible to download without registering in their system</td>
+<td>This is a set of regulatory standard codes and how they are mapped to a set of requirements.</td>
+<td>Industrial</td>
+<td>No, authors include reference but not available anymore</td>
+<td>Regulatory standards and requirements</td>
+<td></td>
+<td>Software traceability in general (related to feature location)</td>
+<td>No</td>
+<td>Genetic algorithm evolving traceability algorithms, fitness function based on known correct traces</td>
+<td>Check references in the paper to find more info or try to locate the artifact</td>
+<td></td>
+<td></td>
+<td>453 Reg. codes (regulatory standard codes) linked to 958 requirements </td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>x264 Library</td>
+<td>Linsbauer et al. 2014</td>
+<td></td>
+<td>The authors mention these links but this was not found <a href="http://www.fosd.de/fh" target="_blank">link</a>, <a href="http://spl2go.cs.ovgu.de/" target="_blank">link</a> and <a href="http://fosd.de/SPLConqueror" target="_blank">link</a></td>
+<td>Video streams encoder</td>
+<td>Open source</td>
+<td>Not found</td>
+<td>Variability model</td>
+<td>Feature model</td>
+<td>Feature model synthesis</td>
+<td></td>
+<td>Genetic algorithms</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>17 features</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Xfig System</td>
+<td>Eisenbarth et al. 2001</td>
+<td></td>
+<td><a href="http://www.xfig.org/" target="_blank">Xfig</a>, <a href="http://mcj.sourceforge.net/" target="_blank">Link</a>, <a href="https://sourceforge.net/projects/mcj/" target="_blank">Link</a> </td>
+<td>"Xfig is a menu-driven tool that allows the user to draw and manipulate objects interactively under the X Window System"</td>
+<td>Open source</td> 
+<td>Yes</td>
+<td>Source code</td>
+<td>C</td>
+<td>Feature location</td>
+<td>No</td>
+<td>Formal concept analysis</td>
+<td></td>
+<td>1</td>
+<td></td>
+<td>76 KLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Not mentioned</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>ZipMe</td>
+<td>Linsbauer et al. 2014, Fischer et al. 2014</td>
+<td></td>
+<td><a href="http://www.fosd.de/fh" target="_blank">Link</a> and download the superImposition examples</td>
+<td></td>
+<td>Academic</td>
+<td>Yes</td>
+<td>Source code</td>
+<td>Java</td>
+<td>Feature location, feature model synthesis</td>
+<td>Yes for Fischer et al.</td>
+<td>Overlap analysis, genetic algorithms</td>
+<td></td>
+<td>N/A</td>
+<td>32</td>
+<td></td>
+<td>5 KLOC</td>
+<td>6.2 KLOC</td>
+<td>Generated</td>
+<td>No</td>
+<td>7</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+		</tbody>
+	</table>
+</body>
+</html>
