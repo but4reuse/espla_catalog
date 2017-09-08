@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html>
+<!-- js, html author: jabier.martinez -->
 <head>
 <meta charset='UTF-8'>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.css" />
+	<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css" />
 	<link rel="stylesheet" type="text/css" href="files/web.css" />
 <style type="text/css">
 .dataTables_filter, .dataTables_info {
 	display: none;
 }
-</style>
-<style type="text/css">
 tfoot {
 	display: table-header-group;
 }
-</style>
-<style type="text/css">
 input {
 	width: 100px
 }
 </style>
+
 <script type="text/javascript"
 	src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+	<script type="text/javascript"
+	src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
+	
 <script type="text/javascript" class="init">
 	$(document).ready(function() {
-		$('#grid tfoot th').each(function() {
-			var title = $(this).text();
-			$(this).html('<input type="text" placeholder="Search" />');
-		});
+
+ 		$('#grid thead th.input-filter').each(function() {
+ 			var title = $(this).text();
+ 			$(this).html('<input type="text" placeholder="Search" />');
+ 		});
+
 		var table = $('#grid').DataTable({
-			paging : false
+			// this allow to have two headers with the first one being the sort
+			bSortCellsTop: true,
+			// no pagination
+			paging : false,
+			// freeze the header rows
+		    fixedHeader: true
 		});
-		table.columns().every(function() {
-			var title = this.header();
-			var that = this;
-			$('input', this.footer()).on('keyup change', function() {
-				if (that.search() !== this.value) {
-					that.search(this.value).draw();
-				}
-			});
-		});
+		
+		// Search for free text
+	    $.each($('.input-filter', table.table().header()), function () {
+	        var column = table.column($(this).index());
+	        $('input', this).on('keyup change', function () {
+	            if (column.search() !== this.value) {
+	                column.search(this.value).draw();
+	            }
+	        });
+	    });
+	    
+	    // Search for selection
+	    $.each($('.select-filter', table.table().header()), function () {
+	        var column = table.column($(this).index());
+	        $( 'select', this).on( 'change', function () {
+	            if ( column.search() !== this.value ) {
+	                column.search(this.value).draw();
+	            } else if ( column.search() !== "" ) {
+	                column.draw();
+	            }
+	        } );
+	    } );
 	});
 </script>
 
@@ -109,8 +132,64 @@ input {
 <th>Costs or cost model mentioned</th>
 <th>PLA Reference Architecture available?</th>
 			</tr>
+			<tr class="userFilters">
+				<th class="input-filter">Name</th>
+				<th class="input-filter">Publications using it</th>
+				<th class="input-filter">Original publication of the system</th>
+				<th class="input-filter">Websites</th>
+				<th class="input-filter">Brief description</th>
+				<th class="input-filter">Origin</th>
+				<th class="input-filter">Available</th>
+				<th class="input-filter">Type of artefact</th>
+				<th class="input-filter">Detailed type of artefact</th>
+				<th class="input-filter">Used in which activities</th>
+				<th class="input-filter">Easy to reproduce</th>
+				<th class="input-filter">Strategies used to tackle the problem</th>
+				<th class="input-filter">Free comments</th>
+				<th class="input-filter">Number of variants</th>
+				<th class="input-filter">Max. number of variants in the case of generation</th>
+				<th class="input-filter">Average size</th>
+				<th class="input-filter">Min. size</th>
+				<th class="input-filter">Max. size</th>
+				<th class="input-filter">How the variants are generated</th>
+				<th class="input-filter">Are the variants created independently?</th>
+<th class="input-filter">Number of features</th>
+<th class="input-filter">Number of optional features</th>
+<th class="input-filter">List of feature names available</th>
+<th class="input-filter">How these features were identified and named?</th>
+<th class="input-filter">Information of which features are implemented in each variant?</th>
+<th class="input-filter">Feature implemented independently in different variants</th>
+<th class="input-filter">Feature with modifications from one variant to another</th>
+<th class="input-filter">2-wise coverage of the features in the variants</th>
+<th class="input-filter">Feature-based jaccard index (similarity)</th>
+<th class="input-filter">Ground-truth for feature location</th>
+<th class="input-filter">Precision and recall reported for feature location</th>
+<th class="input-filter">Ground-truth for feature constraints discovery</th>
+<th class="input-filter">Reported results for feature constraints discovery</th>
+<th class="input-filter">Features with cross-cutting behavior</th>
+<th class="input-filter">Semantic feature constraints (not only structural)</th>
+<th class="input-filter">Constraints degree? Requires or excludes (degree 2)</th>
+<th class="input-filter">Group of features, Alternative</th>
+<th class="input-filter">Group of features, Or</th>
+<th class="input-filter">Abstract features</th>
+<th class="input-filter">Derivative features due to feature interactions or feature negations</th>
+<th class="input-filter">Stakeholders views of the var model mentioned</th>
+<th class="input-filter">Ground-truth for feature model synthesis</th>
+<th class="input-filter">Reported results for feature model synthesis</th>
+<th class="input-filter">RGround-truth for reusable assets extraction</th>
+<th class="input-filter">Reported results for reusable assets extraction</th>
+<th class="input-filter">Testing assets</th>
+<th class="input-filter">Execution traces</th>
+<th class="input-filter">Domain ontology</th>
+<th class="input-filter">Version control history</th>
+<th class="input-filter">Documentation</th>
+<th class="input-filter">Human effort mentioned</th>
+<th class="input-filter">Costs or cost model mentioned</th>
+<th class="input-filter">PLA Reference Architecture available?</th>
+			</tr>
+
 		</thead>
-		<tfoot>
+		<!--  <tfoot>
 						<tr>
 				<th>Name</th>
 				<th>Publications using it</th>
@@ -166,7 +245,7 @@ input {
 <th>Costs or cost model mentioned</th>
 <th>PLA Reference Architecture available?</th>
 			</tr>
-		</tfoot> 
+		</tfoot> -->
 		<tbody>
 <tr>
 <td>Airbag</td>
