@@ -7,6 +7,12 @@
 	href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.css" />
 	<link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css" />
+	
+	<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+		<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css" />
+	
 	<link rel="stylesheet" type="text/css" href="files/web.css" />
 <style type="text/css">
 .dataTables_filter, .dataTables_info {
@@ -18,12 +24,26 @@ tfoot {
 input {
 	width: 100px
 }
+.dataTables_wrapper .dt-buttons {
+  float:none;  
+  text-align:center;
+}
 </style>
 
 <script type="text/javascript"
 	src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+	<!-- Fixed header -->
 	<script type="text/javascript"
 	src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
+	<!-- Export buttons -->
+		<script type="text/javascript"
+	src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
+		<script type="text/javascript"
+	src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>
+			<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+		<script type="text/javascript"
+	src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
 	
 <script type="text/javascript" class="init">
 	$(document).ready(function() {
@@ -33,13 +53,34 @@ input {
  			$(this).html('<input type="text" placeholder="Search" />');
  		});
 
+ 		function exportFileName(){
+ 			var dateObj = new Date();
+        	var month = dateObj.getUTCMonth() + 1;
+        	var day = dateObj.getUTCDate();
+        	var year = dateObj.getUTCFullYear();
+        	return 'ESPLA Catalog ' + day + "-" + month + "-" + year;
+ 		}
+ 		
 		var table = $('#grid').DataTable({
 			// this allow to have two headers with the first one being the sort
 			bSortCellsTop: true,
 			// no pagination
 			paging : false,
 			// freeze the header rows
-		    fixedHeader: true
+		    fixedHeader: true,
+		    // export buttons
+	        dom: 'Bfrtip',
+	        buttons: [
+	        	{
+	                extend: 'csv',
+	                filename: exportFileName()
+	            },
+	            {
+	                extend: 'excel',
+	                messageTop: exportFileName() + ' https://but4reuse.github.io/espla_catalog/',
+	                filename: exportFileName()
+	            }
+	        ]
 		});
 		
 		// Search for free text
@@ -70,10 +111,10 @@ input {
 <body>
 	<div  style="text-align:center">
 		<h1>ESPLA Catalog</h1>
-		<b>How to use:</b> Sort and filter the different columns to find the case studies that fit your needs.</br>
-		<b>How to add or modify:</b> Create an <a href="https://github.com/but4reuse/espla_catalog/issues">ESPLA issue</a> describing the change, or create a <a href="https://github.com/but4reuse/espla_catalog/pulls">Pull request</a> with the modification.</br>
-		<b>Do you want to know more?</b> Go back to the <a href="index.html" target="_blank">main website of the ESPLA catalog</a>.</br>
-		
+		<b>How to use:</b> Sort and filter the different columns to find the case studies that fit your needs.<br/>
+		<b>How to add or modify:</b> Create an <a href="https://github.com/but4reuse/espla_catalog/issues">ESPLA issue</a> describing the change, or create a <a href="https://github.com/but4reuse/espla_catalog/pulls">Pull request</a> with the modification.<br/>
+		<b>Do you want to know more?</b> Go back to the <a href="index.html" target="_blank">main website of the ESPLA catalog</a>.<br/>
+		<b>Export current data to:</b>
 	</div>
 	<table id="grid" class="display" width="300%" cellspacing="0">
 		<thead>
@@ -4734,7 +4775,7 @@ input {
 
 <tr>
 <td>Mobile Phone</td>
-<td>AraÂ´ujo et al. 2013, Nie et al. 2012, Li et al. 2007, Gharsellaoui et al. 2015</td>
+<td>Araújo et al. 2013, Nie et al. 2012, Li et al. 2007, Gharsellaoui et al. 2015</td>
 <td>Segura et al. Automated Merging of feature models using graph transformations</td>
 <td></td>
 <td>This is an academic case study of a mobile phone feature model. We can find it in different works with different number of features. The mentioned original publication presents 2 variants to be merged.  "FMs of the two families of products of the company".</td>
@@ -5799,7 +5840,7 @@ input {
 
 <tr>
 <td>Smart Home</td>
-<td>Araujo et al. 2013, Alves et al. 2008, Weston et al. 2009</td>
+<td>Araújo et al. 2013, Alves et al. 2008, Weston et al. 2009</td>
 <td>K. Pohl, G. Bockle, and F. J. van der Linden, Software Product Line Engineering: Foundations, Principles and Techniques. 2005.</td>
 <td><a href="http://www.ample-project.net/" target="_blank">Ample project</a></td>
 <td>The Smart Home case study defines a SPL targeted to embedded systems, in the context of home automation. SPL for houses with devices and sensors interacting with its inhabitants in order to achieve comfort, safety, and security goals</td>
