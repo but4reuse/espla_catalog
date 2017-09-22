@@ -46,7 +46,14 @@ input {
 	src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
 	
 <script type="text/javascript" class="init">
+	function countNumberOfCaseStudies() {
+		// minus two because one of the <tr> is for the header and other for the filters
+    	return document.getElementsByTagName('tr').length - 2;
+	}
+
 	$(document).ready(function() {
+		
+		document.getElementById("insertCount").innerHTML = countNumberOfCaseStudies();
 
  		$('#grid thead th.input-filter').each(function() {
  			var title = $(this).text();
@@ -111,6 +118,7 @@ input {
 <body>
 	<div  style="text-align:center">
 		<h1>ESPLA Catalog</h1>
+		<b>Current number of case studies:</b> <i id="insertCount"></i><br/>
 		<b>How to use:</b> Sort and filter the different columns to find the case studies that fit your needs.<br/>
 		<b>How to add or modify:</b> Create an <a href="https://github.com/but4reuse/espla_catalog/issues">ESPLA issue</a> describing the change, or create a <a href="https://github.com/but4reuse/espla_catalog/pulls">Pull request</a> with the modification.<br/>
 		<b>Do you want to know more?</b> Go back to the <a href="index.html" target="_blank">main website of the ESPLA catalog</a>.<br/>
@@ -2195,7 +2203,7 @@ input {
 
 <tr>
 <td>E-Clinic</td>
-<td><a href="https://doi.org/10.1145/2491411.2491432" target="_blank">Lohar et al. ESEC/FSE 2013</a>3</td>
+<td><a href="https://doi.org/10.1145/2491411.2491432" target="_blank">Lohar et al. ESEC/FSE 2013</a></td>
 <td></td>
 <td>Broken link: coest.org -> found at CM1 folders at <a href="https://github.com/CoEST/TraceLab/tree/master/Main/Data/Datasets" target="_blank">Github</a> </td>
 <td>Easy clinic</td>
