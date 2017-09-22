@@ -1,0 +1,114 @@
+Correct/update data or request a catalog functionality?
+Please, describe it.
+
+New case studies?
+Using the template below, please, include the data between <td> and </td>.
+There is no need to complete all fields, at least it will be in the catalog.
+Thanks
+
+<!--Name-->
+<td></td>
+<!--Publications using it-->
+<td></td>
+<!--Original publication of the system-->
+<td></td>
+<!--Websites-->
+<td></td>
+<!--Brief description-->
+<td></td>
+<!--Origin-->
+<td></td>
+<!--Available-->
+<td></td>
+<!--Type of artefact-->
+<td></td>
+<!--Detailed type of artefact-->
+<td></td>
+<!--Used in which activities-->
+<td></td>
+<!--Easy to reproduce-->
+<td></td>
+<!--Strategies used to tackle the problem-->
+<td></td>
+<!--Free comments-->
+<td></td>
+<!--Number of variants-->
+<td></td>
+<!--Max. number of variants in the case of generation-->
+<td></td>
+<!--Average size-->
+<td></td>
+<!--Min. size-->
+<td></td>
+<!--Max. size-->
+<td></td>
+<!--How the variants are generated-->
+<td></td>
+<!--Are the variants created independently?-->
+<td></td>
+<!--Number of features-->
+<td></td>
+<!--Number of optional features-->
+<td></td>
+<!--List of feature names available-->
+<td></td>
+<!--How these features were identified and named?-->
+<td></td>
+<!--Information of which features are implemented in each variant?-->
+<td></td>
+<!--Feature implemented independently in different variants-->
+<td></td>
+<!--Feature with modifications from one variant to another-->
+<td></td>
+<!--2-wise coverage of the features in the variants-->
+<td></td>
+<!--Feature-based jaccard index (similarity)-->
+<td></td>
+<!--Ground-truth for feature location-->
+<td></td>
+<!--Precision and recall reported for feature location-->
+<td></td>
+<!--Ground-truth for feature constraints discovery-->
+<td></td>
+<!--Reported results for feature constraints discovery-->
+<td></td>
+<!--Features with cross-cutting behavior-->
+<td></td>
+<!--Semantic feature constraints (not only structural)-->
+<td></td>
+<!--Constraints degree? Requires or excludes (degree 2)-->
+<td></td>
+<!--Group of features, Alternative-->
+<td></td>
+<!--Group of features, Or-->
+<td></td>
+<!--Abstract features-->
+<td></td>
+<!--Derivative features due to feature interactions or feature negations-->
+<td></td>
+<!--Stakeholders views of the var model mentioned-->
+<td></td>
+<!--Ground-truth for feature model synthesis-->
+<td></td>
+<!--Reported results for feature model synthesis-->
+<td></td>
+<!--RGround-truth for reusable assets extraction-->
+<td></td>
+<!--Reported results for reusable assets extraction-->
+<td></td>
+<!--Testing assets-->
+<td></td>
+<!--Execution traces-->
+<td></td>
+<!--Domain ontology-->
+<td></td>
+<!--Version control history-->
+<td></td>
+<!--Documentation-->
+<td></td>
+<!--Human effort mentioned-->
+<td></td>
+<!--Costs or cost model mentioned-->
+<td></td>
+<!--PLA Reference Architecture available?-->
+<td></td>
