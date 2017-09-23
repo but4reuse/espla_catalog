@@ -5679,8 +5679,8 @@ input {
 
 <tr>
 <td>Siemens VAI MSS tool</td>
-<td>Grünbacher et al. Model-Based Customization and Deployment of Eclipse-Based Tools: Industrial Experiences, ASE 2009</td>
-<td></td>
+<td><a href="https://doi.org/10.1007/s10515-010-0076-6" target="_blank">Dhungana et al. ASE 2011</a></td>
+<td><a href="http://doi.ieeecomputersociety.org/10.1109/ASE.2009.11" target="_blank">Grünbacher et al. ASE 2009</a></td>
 <td></td>
 <td>MSS (Maintenance and Setup Systems) tool. An "Eclipse Rich-Client Platform used by developers and metallurgists to supervise and maintain the CC-L2 automation system." "Applying product line concepts in our tool development processes"</td>
 <td>Industrial</td>
@@ -7129,6 +7129,174 @@ input {
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Siemens VAI Steel Plant Automation Software (CC-L2)</td>
+<td><a href="https://doi.org/10.1007/s10515-010-0076-6"  target="_blank">Dhungana et al. ASE 2011</a></td>
+<td><a href="https://doi.org/10.1016/j.jss.2010.02.018"  target="_blank">Dhungana et al. JSS 2010</a></td>
+<td></td>
+<td>Siemens VAI Metals Technologies CC-L2 (Continous Casting Level 2) product line of steel plant continuous casting automation software including process supervision, optimization, material tracking etc. "Understanding variability is relevant as it is frequently configured to match the needs of different customers"</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>Java, Spring Framework</td>
+<td>Feature identification, feature location, feature constraints discovery, reusable assets extraction</td>
+<td>No</td>
+<td>Variability mining from Spring XML files, checking feature constraints consistency with a tool, and manual analysis (unstructured interviews, workshops, tutorials and joint modeling sessions, observations and think aloud protocols, archival data, questionnaires)</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>1.6 MLOC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6 decision models, avg. size of 16 decisions.</td>
+<td>The same as the number of features as it is a decision model with no mandatory features.</td>
+<td>An excerpt of the decision model is shown in a figure</td>
+<td>"a Spring Importer for mining the variability in existing component descriptions files"</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>An excerpt of the decision model is shown in a figure</td>
+<td></td>
+<td></td>
+<td>97 assets. Components based on Spring, Java properties. Selection and parameterization of components.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>4 years of case study</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>IEC 61499 Industrial Automation System</td>
+<td><a href="https://doi.org/10.1007/s10515-010-0076-6"  target="_blank">Dhungana et al. ASE 2011</a></td>
+<td><a href="https://doi.org/10.1109/SEAA.2008.21"  target="_blank">Froschauer et al. SEAA 2008</a></td>
+<td></td>
+<td>Architecture for industrial automation systems consisting of multiple physically and logically distributed components. Runtime variability of installed function blocks to support runtime reconfiguration.</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Source code</td>
+<td>IEC 61499 function blocks, Java, C++</td>
+<td>Feature identification, feature location, feature constraints discovery, reusable assets extraction</td>
+<td>No</td>
+<td>Manual analysis (unstructured interviews,  tutorials and joint modeling sessions, observations and think aloud protocols, archival data, questionnaires)</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>200 Function Blocks</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>17 decision models, avg. size of 10 decisions. The publication shows data of the energy management application and the bottle sorting plant.</td>
+<td>The same as the number of features as it is a decision model with no mandatory features.</td>
+<td>An excerpt is shown in an screenshot of the ControlKing tool and another figure shows a decision model</td>
+<td>Manually</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>An excerpt is shown in an screenshot of the ControlKing tool and another figure shows a decision model</td>
+<td></td>
+<td></td>
+<td>65 assets. Components based on Function Blocks using 4DIAC, IEC 61499 for rewiring and runtime reconfiguration.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2.5 years of case study</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>BMD .NET-based Business Software</td>
+<td><a href="https://doi.org/10.1007/s10515-010-0076-6"  target="_blank">Dhungana et al. ASE 2011</a></td>
+<td><a href="https://doi.org/10.1109/HICSS.2009.460"  target="_blank">Rabiser et al. HICSS 2009</a></td>
+<td><a href="http://www.bmd.com/"  target="_blank">BMD</a></td>
+<td>Variability of business applications in terms of user-visible features. They focus on a subsystem called BMDCRM.</td>
+<td>Industrial</td>
+<td>No</td>
+<td>Components</td>
+<td>plug-ins, .NET Libraries</td>
+<td>Feature identification, feature location, feature constraints discovery, reusable assets extraction</td>
+<td>No</td>
+<td>Manual analysis (unstructured interviews,  tutorials and joint modeling sessions, archival data, questionnaires)</td>
+<td></td>
+<td>1</td>
+<td>N/A</td>
+<td>20 plug-ins and 28 components for the core system (890 KLOC of C# in total)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>16 decisions.</td>
+<td>The same as the number of features as it is a decision model with no mandatory features.</td>
+<td>An excerpt of the decision model is shown in a figure</td>
+<td>Manually</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>An excerpt of the decision model is shown in a figure</td>
+<td></td>
+<td></td>
+<td>32 assets. Components based on .NET assemblies for their selection and on-the-fly activation of .NET libraries</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.5 years of case study</td>
 <td></td>
 <td></td>
 </tr>
