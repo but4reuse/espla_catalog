@@ -6,6 +6,7 @@ Using the template below, please, include the data between <td> and </td>.
 There is no need to complete all fields, at least it will be in the catalog.
 Thanks
 
+```
 <!--Name-->
 <td></td>
 <!--Publications using it-->
@@ -112,3 +113,4 @@ Thanks
 <td></td>
 <!--PLA Reference Architecture available?-->
 <td></td>
+```
